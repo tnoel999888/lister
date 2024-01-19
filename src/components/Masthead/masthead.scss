@@ -1,0 +1,20 @@
+.masthead {
+  width: 100%;
+  height: 50px;
+  background-color: #1F96F3;
+
+  &__image {
+    content:url('../../assets/lister-logo-rectangle.jpg');
+    width: 185px;
+    display: inline-flex;
+  }
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #F5F5F5;
+}
