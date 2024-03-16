@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/lister/static/css/main.6f306a5f.css",
+    "main.js": "/lister/static/js/main.ccfea7d5.js",
+    "static/js/453.e23df6d7.chunk.js": "/lister/static/js/453.e23df6d7.chunk.js",
+    "static/media/lister-logo-rectangle.jpg": "/lister/static/media/lister-logo-rectangle.6a12e52339d5991bd795.jpg",
+    "index.html": "/lister/index.html",
+    "main.6f306a5f.css.map": "/lister/static/css/main.6f306a5f.css.map",
+    "main.ccfea7d5.js.map": "/lister/static/js/main.ccfea7d5.js.map",
+    "453.e23df6d7.chunk.js.map": "/lister/static/js/453.e23df6d7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f306a5f.css",
+    "static/js/main.ccfea7d5.js"
+  ]
+}
