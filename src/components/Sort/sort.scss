@@ -1,4 +1,13 @@
 .sort {
+    margin-left: 6px;
+    
+    &__radio-group,
+    &__total-label {
+        display: inline-flex;
+    }
 
+    &__total-label {
+        float: right;
+    }
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -14,7 +14,7 @@ const CSS_BLOCK_NAME = 'navigation';
 const blk = block(CSS_BLOCK_NAME);
 
 function Navigation({ setFile }) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   function handleChange(event, newValue) {
     setValue(newValue);

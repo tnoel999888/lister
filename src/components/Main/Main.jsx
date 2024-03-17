@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Item } from "../Item"
 import { Controls } from "../Controls"
+import { TopTen } from "../TopTen"
 import { block } from 'bem-cn';
 import Papa from "papaparse";
+
 import './main.scss';
 
 const CSS_BLOCK_NAME = 'main';
@@ -27,13 +29,13 @@ function Main({ ratingsFile }) {
     },
   };
 
-  // Parse file on component load
   useEffect(() => {
     Papa.parse(ratingsFile, papaConfig);
   }, [ratingsFile]);
     
   return (
     <div className={blk()}>
+      <TopTen originalData={originalData} />
       <Controls 
         originalData={originalData}
         setCurrentData={setCurrentData}

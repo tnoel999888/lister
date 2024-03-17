@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -11,7 +11,7 @@ const CSS_BLOCK_NAME = 'sort';
 const blk = block(CSS_BLOCK_NAME);
 
 function Sort({originalData, setCurrentData}) {
-  const [value, setValue] = React.useState('reverseChronological');
+  const [value, setValue] = useState('reverseChronological');
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -33,12 +33,17 @@ function Sort({originalData, setCurrentData}) {
   
   return (
     <div className={blk()}>
-      <RadioGroup aria-label="sort" name="sort" row value={value} onChange={handleChange}>
-        <FormControlLabel value="reverseChronological" control={<Radio />} label="Reverse Chronological" />
-        <FormControlLabel value="chronological" control={<Radio />} label="Chronological" />
-        <FormControlLabel value="alphabetical" control={<Radio />} label="Alphabetical" />
-        <FormControlLabel value="ratingsGrouped" control={<Radio />} label="Ratings Grouped" />
-      </RadioGroup>
+      <div className={blk("radio-group")}>
+        <RadioGroup aria-label="sort" name="sort" row value={value} onChange={handleChange}>
+          <FormControlLabel value="reverseChronological" control={<Radio />} label="Reverse Chronological" />
+          <FormControlLabel value="chronological" control={<Radio />} label="Chronological" />
+          <FormControlLabel value="alphabetical" control={<Radio />} label="Alphabetical" />
+          <FormControlLabel value="ratingsGrouped" control={<Radio />} label="Ratings Grouped" />
+        </RadioGroup>
+      </div>
+      <div className={blk("total-label")}>
+        <span>Total: {originalData.length}</span>
+      </div>
     </div>
   );
 }

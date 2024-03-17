@@ -1,0 +1,13 @@
+.topTen {
+    flex-wrap: wrap;
+
+    &__label {
+        margin-left: 6px;
+        // display: inline-flex;
+    }
+
+    &__items {
+        display: inline-flex;
+    }
+}
+
