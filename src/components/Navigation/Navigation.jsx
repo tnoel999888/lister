@@ -8,11 +8,12 @@ import './navigation.scss';
 const CSS_BLOCK_NAME = 'navigation';
 const blk = block(CSS_BLOCK_NAME);
 
-function Navigation() {
+function Navigation({ onTabChange }) {
   const [value, setValue] = React.useState(0);
 
   function handleChange(event, newValue) {
     setValue(newValue);
+    onTabChange(newValue)
   }
 
   return (
