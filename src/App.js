@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Masthead, Navigation } from './components';
+import { Masthead, Navigation, Main } from './components';
 
 class App extends Component {
   render() {
@@ -8,6 +8,7 @@ class App extends Component {
       <div className="App">
         <Masthead />
         <Navigation />
+        <Main />
       </div>
     );
   }

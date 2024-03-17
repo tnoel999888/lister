@@ -1,0 +1,23 @@
+.item {
+    white-space: nowrap;
+    margin: 8px;
+    text-align: justify;
+
+    &__card {
+        color: white;
+    }
+
+    &__emoji {
+        margin-left: 8px;
+    }
+
+    &__review {
+        margin-left: 8px;
+        float: right;
+    }
+}
+
+.MuiCardContent-root {
+    padding: 12px !important;
+}
+
