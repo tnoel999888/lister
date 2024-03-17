@@ -4,9 +4,9 @@
   background-color: #1F96F3;
 
   &__image {
+    margin: auto;
     content:url('../../assets/lister-logo-rectangle.jpg');
     width: 185px;
-    display: inline-flex;
   }
 }
 
