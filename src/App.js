@@ -2,35 +2,14 @@ import React, { useState } from 'react';
 import './App.css';
 import { Masthead, Navigation, Main } from './components';
 
-import moviesFile from './data/movie-ratings.csv';
-import tvShowsFile from './data/tv-ratings.csv';
-import booksFile from './data/book-ratings.csv';
-import restaurantsFile from './data/restaurant-ratings.csv';
-
 function App() {
-  
-  const [file, setFile] = useState(moviesFile);
-
-  const onTabChange = (value) => {
-    if (value === 0) {
-      setFile(moviesFile);
-    }
-    if (value === 1) {
-      setFile(tvShowsFile);
-    }
-    if (value === 2) {
-      setFile(booksFile);
-    }
-    if (value === 3) {
-      setFile(restaurantsFile);
-    }
-  }
+  const [file, setFile] = useState(null);
 
   return (
     <div className="App">
       <Masthead />
-      <Navigation onTabChange={onTabChange} />
-      <Main ratingsFile={file} />
+      <Navigation setFile={setFile} />
+      { file !== null ? <Main ratingsFile={file} /> : null }
     </div>
   );
 }
