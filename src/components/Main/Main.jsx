@@ -4,12 +4,11 @@ import { Controls } from "../Controls"
 import { block } from 'bem-cn';
 import Papa from "papaparse";
 import './main.scss';
-import csvFile from './movie-ratings.csv';
 
 const CSS_BLOCK_NAME = 'main';
 const blk = block(CSS_BLOCK_NAME);
 
-function Main() {
+function Main({ ratingsFile }) {
 
   const [currentData, setCurrentData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
@@ -30,8 +29,8 @@ function Main() {
 
   // Parse file on component load
   useEffect(() => {
-    Papa.parse(csvFile, papaConfig);
-  }, []);
+    Papa.parse(ratingsFile, papaConfig);
+  }, [ratingsFile]);
     
   return (
     <div className={blk()}>
