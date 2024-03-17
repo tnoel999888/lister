@@ -17,7 +17,6 @@ export const ratingsColours = {
     85:  "#669104",
     90:  "#4c8200",
     95:  "#4d7300",
-    98:  "#17b19d",
     99:  "#17b19d",
 };
 
@@ -28,29 +27,29 @@ const emojis = {
     thumbUp: "👍",
     praise: "🙌",
     love: "❤️",
-    star: "🌟",
+    trophy: "🏆",
 }
 
 export const getRatingEmoji = (rating) => {
-    if (rating < 20) {
+    if (rating <= 15) {
         return emojis.poo;
     }
-    if (rating < 50) {
+    if (rating <= 45) {
         return emojis.thumbDown;
     }
-    if (rating < 70) {
+    if (rating <= 65) {
         return emojis.wave;
     }
-    if (rating < 80) {
+    if (rating <= 75) {
         return emojis.thumbUp;
     }
-    if (rating < 90) {
+    if (rating <= 85) {
         return emojis.praise;
     }
-    if (rating < 98) {
+    if (rating <= 95) {
         return emojis.love;
     }
-    if (rating < 100) {
-        return emojis.star;
+    if (rating <= 99) {
+        return emojis.trophy;
     }
 }

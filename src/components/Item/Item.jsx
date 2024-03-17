@@ -19,7 +19,7 @@ function Item({name, rating, review}) {
             { name }
           </span>
           <div>
-            <span className={blk("rating")}>{ rating/10 }/10</span>
+            <span className={blk("rating")}>{ Math.round(rating/10*2)/2 }/10</span>
             <span className={blk("emoji")}>{ getRatingEmoji(rating) }</span>
             { review !== "" ? 
               <span className={blk("review")} title={review}>

@@ -1,19 +1,21 @@
 .search {
+    margin-left: 6px;
+
     &__root {
-        padding: '2px 4px';
-        display: 'flex';
-        align-items: 'center';
-        width: 400;
+        // padding: '2px 4px';
+        // display: 'flex';
+        // align-items: 'center';
+        // width: 400;
     }
 
     &__input {
-        text-align: justify;
-        margin-left: 12px;
-        flex: 1;
+        // text-align: justify;
+        // margin-left: 12px;
+        // flex: 1;
     }
 
     &__iconButton {
-        padding: 10;
+        // padding: 10;
     }
 }
 
