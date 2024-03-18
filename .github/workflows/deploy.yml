@@ -27,6 +27,7 @@ jobs:
     # Run our deployment command
     - name: Deploying the static website to gh-pages
       run: |
+        git config --global url.https://${{ secrets.ACTIONS_DEPLOY }}@github.com/.insteadOf https://github.com/
         git config --global user.email "tnoel7@msn.com"
         git config --global user.name "Timan Noel"
         npm run deploy
