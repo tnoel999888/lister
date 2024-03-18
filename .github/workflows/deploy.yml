@@ -15,6 +15,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Install
+      run: npm run install
+
+    - name: Build
+      run: npm run build
+    
     # Run our deployment command
     - name: Deploying the static website to gh-pages
       run: npm run deploy
