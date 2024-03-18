@@ -37,9 +37,9 @@ function Item({name, rating, review}) {
           backgroundColor: ratingsColours[rating],
           color: "#ffffff",
         }}
-        classes={{root: state.raised ? classes.cardHovered : ""}}
-        onMouseOver={() => setState({ raised: true, shadow:3})} 
-        onMouseOut={() => setState({ raised:false, shadow:1 })} 
+        classes={{ root: state.raised ? classes.cardHovered : "" }}
+        onMouseOver={() => setState({ raised: true, shadow: 3 })} 
+        onMouseOut={() => setState({ raised: false, shadow: 1 })} 
         raised={state.raised} 
         zdepth={state.shadow}
       >

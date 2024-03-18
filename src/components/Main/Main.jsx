@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Item } from "../Item"
+import { Items } from "../Items"
 import { Controls } from "../Controls"
 import { TopTen } from "../TopTen"
 import { block } from 'bem-cn';
@@ -40,15 +40,7 @@ function Main({ ratingsFile }) {
         originalData={originalData}
         setCurrentData={setCurrentData}
       />
-
-      {currentData.map(([name, rating, review]) => (
-        <Item 
-          key={name}
-          name={name}
-          rating={rating}
-          review={review}
-        />
-      ))}
+      <Items currentData={currentData} />
     </div>
   );
 }
