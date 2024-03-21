@@ -30,26 +30,64 @@ const emojis = {
     trophy: "🏆",
 }
 
-export const getRatingEmoji = (rating) => {
+export const RATINGS_INFO = {
+    0: {
+        name: "Awful",
+        emoji: emojis.poo,
+        rank: 0,
+    },
+    1: {
+        name: "Bad",
+        emoji: emojis.thumbDown,
+        rank: 1,
+    },
+    2: {
+        name: "OK",
+        emoji: emojis.wave,
+        rank: 2,
+    },
+    3: {
+        name: "Good",
+        emoji: emojis.thumbUp,
+        rank: 3,
+    },
+    4: {
+        name: "Great",
+        emoji: emojis.praise,
+        rank: 4,
+    },
+    5: {
+        name: "Love",
+        emoji: emojis.love,
+        rank: 5,
+    },
+    6: {
+        name: "Top",
+        emoji: emojis.trophy,
+        rank: 6,
+    },
+}
+
+export const getRatingInfo = (rating) => {
     if (rating <= 15) {
-        return emojis.poo;
+        return RATINGS_INFO[0];
     }
     if (rating <= 45) {
-        return emojis.thumbDown;
+        return RATINGS_INFO[1];
     }
     if (rating <= 65) {
-        return emojis.wave;
+        return RATINGS_INFO[2];
     }
     if (rating <= 75) {
-        return emojis.thumbUp;
+        return RATINGS_INFO[3];
     }
     if (rating <= 85) {
-        return emojis.praise;
+        return RATINGS_INFO[4];
     }
     if (rating <= 95) {
-        return emojis.love;
+        return RATINGS_INFO[5];
     }
     if (rating <= 99) {
-        return emojis.trophy;
+        return RATINGS_INFO[6];
     }
 }

@@ -1,0 +1,14 @@
+.filters {
+    padding: 0 8px;
+    margin-bottom: 16px;
+
+    &__button {
+        margin-right: 8px;
+    }
+
+    &__button_active {
+        background-color: red;
+    }
+
+}
+

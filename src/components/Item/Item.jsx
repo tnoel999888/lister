@@ -5,13 +5,13 @@ import PropTypes from "prop-types";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import RateReview from '@material-ui/icons/RateReview';
-import { getRatingEmoji, ratingsColours } from '../consts';
+import { getRatingInfo, ratingsColours } from '../consts';
 import './item.scss';
 
 const CSS_BLOCK_NAME = 'item';
 const blk = block(CSS_BLOCK_NAME);
 
-function Item({name, rating, review}) {
+function Item({ name, rating, review }) {
 
   const useStyles = makeStyles({
     root: {
@@ -49,7 +49,7 @@ function Item({name, rating, review}) {
           </span>
           <div>
             <span className={blk("rating")}>{ Math.round(rating/10*2)/2 }/10</span>
-            <span className={blk("emoji")}>{ getRatingEmoji(rating) }</span>
+            <span className={blk("emoji")}>{ getRatingInfo(rating).emoji }</span>
             { review !== "" ? 
               <span className={blk("review")} title={review}>
                 <RateReview />
