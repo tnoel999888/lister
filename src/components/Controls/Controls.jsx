@@ -16,6 +16,9 @@ function Controls({ originalData, setCurrentData, setFilters }) {
       <Search originalData={originalData} setCurrentData={setCurrentData} />
       <Sort originalData={originalData} setCurrentData={setCurrentData} />
       <Filters originalData={originalData} setCurrentData={setCurrentData} setFilters={setFilters} />
+      <div className={blk("divider")}>
+        <hr />
+      </div>
     </div>
   );
 }
