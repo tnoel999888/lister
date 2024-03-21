@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { block } from 'bem-cn';
 import { Item } from "../Item"
 import PropTypes from "prop-types";
-import { getRatingInfo } from '../consts';
 
 import './items.scss';
 
