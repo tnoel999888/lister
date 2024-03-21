@@ -26,7 +26,6 @@ function Filters({ originalData, setCurrentData, setFilters }) {
 
   const [allBtnSelected, setAllBtnSelected] = useState(true);
   const [selectedBtns, setSelectedBtns] = useState({});
-  const [rerender, setRerender] = useState(false);
 
   return (
     <div className={blk()}>
@@ -38,6 +37,7 @@ function Filters({ originalData, setCurrentData, setFilters }) {
           }}
           variant={allBtnSelected ? "contained" : "outlined"}
           onClick={() => {
+            setCurrentData([...originalData]);
             setSelectedBtns({});
             setAllBtnSelected(true);
           }}
@@ -62,17 +62,24 @@ function Filters({ originalData, setCurrentData, setFilters }) {
                 selectedBtns[index] = true;
               }
   
-              const newSelectedBtns = {...selectedBtns};
+              const newSelectedBtns = { ...selectedBtns }; // need to create new object to trigger re-render
+
+              const newData = [...originalData].filter(([name, rating, review]) => {
+                const ratingsInfo = getRatingInfo(rating);
+                console.log(ratingsInfo)
+                return newSelectedBtns[ratingsInfo.rank];
+              });
+
+              setCurrentData(newData);
+              setFilters(newSelectedBtns); 
               setSelectedBtns(newSelectedBtns);
-              setFilters(newSelectedBtns); // need to create new object to trigger re-render
   
               if (!Object.values(newSelectedBtns).includes(true)) {
+                setCurrentData([...originalData]);
                 setAllBtnSelected(true);
               } else {
                 setAllBtnSelected(false);
               }
-  
-              setRerender(!rerender);
             }}
           >
             { RATINGS_INFO[rank].name } { RATINGS_INFO[rank].emoji } ({ ratings[rank] })

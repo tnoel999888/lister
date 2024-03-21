@@ -11,7 +11,7 @@ import './item.scss';
 const CSS_BLOCK_NAME = 'item';
 const blk = block(CSS_BLOCK_NAME);
 
-function Item({name, rating, review}) {
+function Item({ name, rating, review }) {
 
   const useStyles = makeStyles({
     root: {

@@ -9,16 +9,11 @@ import './items.scss';
 const CSS_BLOCK_NAME = 'items';
 const blk = block(CSS_BLOCK_NAME);
 
-function Items({ currentData, filters }) {
+function Items({ currentData }) {
 
   return (
     <div className={blk()}>
       {[...currentData].map(([name, rating, review]) => {
-        const ratingsInfo = getRatingInfo(rating);
-        const noFilters = filters && Object.values(filters).length && !Object.values(filters).includes(true);
-        console.log(Object.values(filters));
-        console.log(Object.values(filters).includes(true));
-        if ((filters && filters[ratingsInfo.rank]) || noFilters) {
           return (
             <Item 
               key={name}
@@ -27,9 +22,7 @@ function Items({ currentData, filters }) {
               review={review}
             />
           )
-        } else {
-          return null;
-        }}
+        }
       )}
     </div>
   );
