@@ -12,6 +12,7 @@ const blk = block(CSS_BLOCK_NAME);
 
 function Main({ ratingsFile }) {
 
+  const [filters, setFilters] = useState({});
   const [currentData, setCurrentData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
 
@@ -20,7 +21,7 @@ function Main({ ratingsFile }) {
     download: true,
     complete: (results) => {
       results.data.shift(); // remove header line
-      const reversedData = [...results.data].reverse();
+      const reversedData = [...results.data].reverse(); // reverse chronological order
       setOriginalData(reversedData);
       setCurrentData(reversedData);
     },
@@ -39,8 +40,9 @@ function Main({ ratingsFile }) {
       <Controls 
         originalData={originalData}
         setCurrentData={setCurrentData}
+        setFilters={setFilters}
       />
-      <Items currentData={currentData} />
+      <Items currentData={currentData} filters={{...filters}} />
     </div>
   );
 }
