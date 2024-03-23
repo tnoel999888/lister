@@ -12,17 +12,18 @@ function Items({ currentData }) {
 
   return (
     <div className={blk()}>
-      {[...currentData].map(([name, rating, review]) => {
-          return (
-            <Item 
-              key={name}
-              name={name}
-              rating={rating}
-              review={review}
-            />
-          )
-        }
-      )}
+      {currentData
+        .map(([name, rating, review]) => {
+            return (
+              <Item 
+                key={name}
+                name={name}
+                rating={rating}
+                review={review}
+              />
+            )
+          }
+        )}
     </div>
   );
 }

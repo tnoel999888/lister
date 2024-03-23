@@ -1,13 +1,10 @@
 .filters {
     padding: 0 8px;
-    margin-bottom: 16px;
+    margin-right: 24px;
+    display: inline-flex;
 
     &__button {
         margin-right: 8px;
-    }
-
-    &__button_active {
-        background-color: red;
     }
 
 }

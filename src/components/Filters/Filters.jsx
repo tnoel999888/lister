@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { block } from 'bem-cn';
-
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import PropTypes from "prop-types";
@@ -11,11 +10,16 @@ import './filters.scss';
 const CSS_BLOCK_NAME = 'filters';
 const blk = block(CSS_BLOCK_NAME);
 
-function Filters({ originalData, setCurrentData, setFilters }) {
+function Filters({ originalData, setCurrentData }) {
 
+  const selectedBtnBackground = (selected) => selected ? "#4fcdff" : "transparent";
+  const selectedBtnTextColor = (selected) => selected ? "white" : "";
   const ratings = {};
+  const [selectedFilters, setSelectedFilters] = useState({});
+  const [allBtnSelected, setAllBtnSelected] = useState(true);
 
-  originalData.forEach(([name, rating, review]) => {
+  // Get count for each rating group
+  originalData.forEach(([,rating,]) => {
     const ratingInfo = getRatingInfo(rating);
     if (ratings[ratingInfo.rank]) {
       ratings[ratingInfo.rank]++;
@@ -24,22 +28,30 @@ function Filters({ originalData, setCurrentData, setFilters }) {
     }
   });
 
-  const [allBtnSelected, setAllBtnSelected] = useState(true);
-  const [selectedBtns, setSelectedBtns] = useState({});
+  // Set all btn as selected if no other btns selected
+  useEffect(() => {
+    setAllBtnSelected(!Object.values(selectedFilters).length);
+  }, [selectedFilters]);
+
+  useEffect(() => {
+    if (allBtnSelected) {
+      setCurrentData(originalData);
+    }
+  }, [allBtnSelected, originalData, setCurrentData]);
 
   return (
     <div className={blk()}>
       <span className={blk("button")}>
         <Button
           color="primary" 
-          style={{
-            backgroundColor: allBtnSelected ? "#4fcdff" : "transparent",
+          variant="outlined"
+          style={{ 
+            backgroundColor: selectedBtnBackground(allBtnSelected), 
+            color: selectedBtnTextColor(allBtnSelected), 
           }}
-          variant={allBtnSelected ? "contained" : "outlined"}
           onClick={() => {
-            setCurrentData([...originalData]);
-            setSelectedBtns({});
-            setAllBtnSelected(true);
+            setSelectedFilters({});
+            setCurrentData(originalData);
           }}
         >
           All ({ originalData.length })
@@ -47,47 +59,31 @@ function Filters({ originalData, setCurrentData, setFilters }) {
       </span>
 
       <ButtonGroup color="primary" aria-label="outlined primary button group">
-      { Object.keys(ratings).map((rank, index) => {
-        return (
-          <Button 
-            key={index}
-            style={{
-              backgroundColor: selectedBtns[index] ? "#4fcdff" : "transparent",
-            }}
-            variant={selectedBtns[index] ? "contained" : "outlined"}
-            onClick={() => {
-              if (selectedBtns[index] !== undefined) {
-                selectedBtns[index] = !selectedBtns[index];
-              } else {
-                selectedBtns[index] = true;
-              }
-  
-              const newSelectedBtns = { ...selectedBtns }; // need to create new object to trigger re-render
+        { Object.keys(ratings).map((rank, index) => {
+          return (
+            <Button 
+              key={index}
+              variant="outlined"
+              style={{ 
+                backgroundColor: selectedBtnBackground(selectedFilters[index]),
+                color: selectedBtnTextColor(selectedFilters[index]), 
+              }}
+              onClick={() => {
+                if (selectedFilters[index] !== undefined) {
+                  delete selectedFilters[index];
+                } else {
+                  selectedFilters[index] = true;
+                }
 
-              const newData = [...originalData].filter(([name, rating, review]) => {
-                const ratingsInfo = getRatingInfo(rating);
-                console.log(ratingsInfo)
-                return newSelectedBtns[ratingsInfo.rank];
-              });
-
-              setCurrentData(newData);
-              setFilters(newSelectedBtns); 
-              setSelectedBtns(newSelectedBtns);
-  
-              if (!Object.values(newSelectedBtns).includes(true)) {
-                setCurrentData([...originalData]);
-                setAllBtnSelected(true);
-              } else {
-                setAllBtnSelected(false);
-              }
-            }}
-          >
-            { RATINGS_INFO[rank].name } { RATINGS_INFO[rank].emoji } ({ ratings[rank] })
-          </Button>
+                setSelectedFilters({...selectedFilters});
+                setCurrentData(originalData.filter(([,,,rank]) => selectedFilters[rank])); 
+              }}
+            >
+              { RATINGS_INFO[rank].name } { RATINGS_INFO[rank].emoji } ({ ratings[rank] })
+            </Button>
+          )}
         )}
-      )}
       </ButtonGroup> 
-      
     </div>
   );
 }
@@ -95,7 +91,6 @@ function Filters({ originalData, setCurrentData, setFilters }) {
 Filters.propTypes = {
   originalData: PropTypes.array.isRequired,
   setCurrentData: PropTypes.func.isRequired,
-  setFilters: PropTypes.func.isRequired,
 };
 
 export default Filters;

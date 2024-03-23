@@ -1,5 +1,6 @@
 .sort {
     margin-left: 6px;
+    display: inline-flex;
     
     &__radio-group,
     &__total-label {
@@ -8,6 +9,11 @@
 
     &__total-label {
         float: right;
+    }
+
+    &__icon {
+        margin-right: 12px;
+        padding-top: 6px;
     }
 }
 

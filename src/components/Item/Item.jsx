@@ -36,6 +36,7 @@ function Item({ name, rating, review }) {
         style={{
           backgroundColor: ratingsColours[rating],
           color: "#ffffff",
+          maxWidth: "fit-content"
         }}
         classes={{ root: state.raised ? classes.cardHovered : "" }}
         onMouseOver={() => setState({ raised: true, shadow: 3 })} 
