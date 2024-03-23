@@ -10,7 +10,7 @@ import './sort.scss';
 const CSS_BLOCK_NAME = 'sort';
 const blk = block(CSS_BLOCK_NAME);
 
-function Sort({ originalData, setCurrentData }) {
+function Sort({ currentData, setCurrentData }) {
   const [value, setValue] = useState('reverseChronological');
 
   const handleChange = (event) => {
@@ -18,16 +18,16 @@ function Sort({ originalData, setCurrentData }) {
     setValue(value);
 
     if (value === "reverseChronological") {
-      setCurrentData(originalData);
+      setCurrentData([...currentData].sort(([,,,,index1],[,,,,index2]) => index1 - index2));
     }
     if (value === "chronological") {
-      setCurrentData([...originalData].reverse());
+      setCurrentData([...currentData].sort(([,,,,index1],[,,,,index2]) => index2 - index1));
     }    
     if (value === "alphabetical") {
-      setCurrentData([...originalData].sort());
+      setCurrentData([...currentData].sort());
     }
     if (value === "ratingsGrouped") {
-      setCurrentData([...originalData].sort((a,b) => a[1].localeCompare(b[1])).reverse());
+      setCurrentData([...currentData].sort((a,b) => a[1].localeCompare(b[1])).reverse());
     }
   };
   
@@ -41,15 +41,12 @@ function Sort({ originalData, setCurrentData }) {
           <FormControlLabel value="ratingsGrouped" control={<Radio />} label="Ratings Grouped" />
         </RadioGroup>
       </div>
-      <div className={blk("total-label")}>
-        <span>Total: {originalData.length}</span>
-      </div>
     </div>
   );
 }
 
 Sort.propTypes = {
-  originalData: PropTypes.array.isRequired,
+  currentData: PropTypes.array.isRequired,
   setCurrentData: PropTypes.func.isRequired,
 };
 

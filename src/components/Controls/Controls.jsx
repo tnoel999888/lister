@@ -10,11 +10,11 @@ import './controls.scss';
 const CSS_BLOCK_NAME = 'controls';
 const blk = block(CSS_BLOCK_NAME);
 
-function Controls({ originalData, setCurrentData }) {
+function Controls({ originalData, currentData, setCurrentData }) {
   return (
     <div className={blk()}>
       <Search originalData={originalData} setCurrentData={setCurrentData} />
-      <Sort originalData={originalData} setCurrentData={setCurrentData} />
+      <Sort currentData={currentData} setCurrentData={setCurrentData} />
       <Filters originalData={originalData} setCurrentData={setCurrentData} />
       <div className={blk("divider")}>
         <hr />
@@ -25,8 +25,8 @@ function Controls({ originalData, setCurrentData }) {
 
 Controls.propTypes = {
   originalData: PropTypes.array.isRequired,
+  currentData: PropTypes.array.isRequired,
   setCurrentData: PropTypes.func.isRequired,
-  setFilters: PropTypes.func.isRequired,
 };
 
 export default Controls;

@@ -22,10 +22,11 @@ function Main({ ratingsFile }) {
     complete: (results) => {
       results.data.shift(); // remove header line
       const reversedData = [...results.data].reverse(); // reverse chronological order
-      reversedData.map(data => {
+      reversedData.map((data, index) => {
         const rating = data[1];
         const ratingInfo = getRatingInfo(rating);
-        return data.push(ratingInfo.rank);
+        data.push(ratingInfo.rank);
+        return data.push(index);
       });
       setOriginalData(reversedData);
       setCurrentData(reversedData);
@@ -44,6 +45,7 @@ function Main({ ratingsFile }) {
       <TopTen originalData={originalData} />
       <Controls 
         originalData={originalData}
+        currentData={currentData}
         setCurrentData={setCurrentData}
       />
       <Items currentData={currentData} />
