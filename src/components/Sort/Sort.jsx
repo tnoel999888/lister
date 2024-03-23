@@ -10,7 +10,7 @@ import './sort.scss';
 const CSS_BLOCK_NAME = 'sort';
 const blk = block(CSS_BLOCK_NAME);
 
-function Sort({originalData, setCurrentData}) {
+function Sort({ originalData, setCurrentData }) {
   const [value, setValue] = useState('reverseChronological');
 
   const handleChange = (event) => {

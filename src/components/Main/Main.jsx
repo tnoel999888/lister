@@ -3,6 +3,7 @@ import { Items } from "../Items"
 import { Controls } from "../Controls"
 import { TopTen } from "../TopTen"
 import { block } from 'bem-cn';
+import { getRatingInfo } from '../consts';
 import Papa from "papaparse";
 
 import './main.scss';
@@ -12,7 +13,6 @@ const blk = block(CSS_BLOCK_NAME);
 
 function Main({ ratingsFile }) {
 
-  const [filters, setFilters] = useState({});
   const [currentData, setCurrentData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
 
@@ -22,6 +22,11 @@ function Main({ ratingsFile }) {
     complete: (results) => {
       results.data.shift(); // remove header line
       const reversedData = [...results.data].reverse(); // reverse chronological order
+      reversedData.map(data => {
+        const rating = data[1];
+        const ratingInfo = getRatingInfo(rating);
+        return data.push(ratingInfo.rank);
+      });
       setOriginalData(reversedData);
       setCurrentData(reversedData);
     },
@@ -40,9 +45,8 @@ function Main({ ratingsFile }) {
       <Controls 
         originalData={originalData}
         setCurrentData={setCurrentData}
-        setFilters={setFilters}
       />
-      <Items currentData={currentData} filters={{...filters}} />
+      <Items currentData={currentData} />
     </div>
   );
 }

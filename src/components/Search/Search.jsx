@@ -12,7 +12,7 @@ import './search.scss';
 const CSS_BLOCK_NAME = 'search';
 const blk = block(CSS_BLOCK_NAME);
 
-function Search({originalData, setCurrentData}) {
+function Search({ originalData, setCurrentData }) {
 
   const onSearch = event => {
     const inputStr = event.target.value;

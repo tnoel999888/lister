@@ -10,12 +10,12 @@ import './controls.scss';
 const CSS_BLOCK_NAME = 'controls';
 const blk = block(CSS_BLOCK_NAME);
 
-function Controls({ originalData, setCurrentData, setFilters }) {
+function Controls({ originalData, setCurrentData }) {
   return (
     <div className={blk()}>
       <Search originalData={originalData} setCurrentData={setCurrentData} />
       <Sort originalData={originalData} setCurrentData={setCurrentData} />
-      <Filters originalData={originalData} setCurrentData={setCurrentData} setFilters={setFilters} />
+      <Filters originalData={originalData} setCurrentData={setCurrentData} />
       <div className={blk("divider")}>
         <hr />
       </div>
