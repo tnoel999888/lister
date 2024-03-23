@@ -75,6 +75,7 @@ function Filters({ originalData, setCurrentData }) {
                   selectedFilters[index] = true;
                 }
 
+                setSelectedFilters({...selectedFilters});
                 setCurrentData(originalData.filter(([,,,rank]) => selectedFilters[rank])); 
               }}
             >

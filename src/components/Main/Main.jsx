@@ -39,7 +39,7 @@ function Main({ ratingsFile }) {
   useEffect(() => {
     Papa.parse(ratingsFile, papaConfig);
   }, [ratingsFile]);
-    
+
   return (
     <div className={blk()}>
       <TopTen originalData={originalData} />
