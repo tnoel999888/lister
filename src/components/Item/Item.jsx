@@ -6,6 +6,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import RateReview from '@material-ui/icons/RateReview';
 import { getRatingInfo, ratingsColours } from '../consts';
+import IconButton  from '@material-ui/core/IconButton';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 import './item.scss';
 
 const CSS_BLOCK_NAME = 'item';
@@ -20,7 +24,20 @@ function Item({ name, rating, review }) {
     },
     cardHovered: {
       transform: "scale3d(1.05, 1.05, 1)"
-    }
+    },
+    modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      maxWidth: "400px",
+      margin: "auto",
+    },
+    paper: {
+      backgroundColor: "white",
+      padding: "0 24px",
+      border: '1px solid #000',
+      boxShadow: "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
+    },
   });
   const classes = useStyles();
 
@@ -28,6 +45,16 @@ function Item({ name, rating, review }) {
     raised: false,
     shadow: 1,
   })
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className={blk()}>
@@ -52,13 +79,36 @@ function Item({ name, rating, review }) {
             <span className={blk("rating")}>{ Math.round(rating/10*2)/2 }/10</span>
             <span className={blk("emoji")}>{ getRatingInfo(rating).emoji }</span>
             { review !== "" ? 
-              <span className={blk("review")} title={review}>
-                <RateReview />
+              <span className={blk("review")}>
+                <IconButton onClick={handleOpen}>
+                  <RateReview />
+                </IconButton >
               </span> : null
             }
           </div>  
         </CardContent>
       </Card>
+
+      { review ?
+      <Modal
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <h3>Review</h3>
+            <p>{review}</p>
+          </div>
+        </Fade>
+      </Modal>
+      : null
+      }
     </div>
   );
 }
