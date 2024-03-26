@@ -1,6 +1,14 @@
 .main {
     display: flex;
-    flex-wrap: wrap;
-    padding: 8px;
+    justify-content: center;
+    background-color: #333333;
+
+    &__content {
+        max-width: 1606px;
+        background-color: #4f4e4e;
+        flex-wrap: wrap;
+        display: flex;
+        padding: 16px
+    }
 }
 

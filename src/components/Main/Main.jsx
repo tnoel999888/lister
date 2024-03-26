@@ -42,13 +42,15 @@ function Main({ ratingsFile }) {
 
   return (
     <div className={blk()}>
-      <TopTen originalData={originalData} />
-      <Controls 
-        originalData={originalData}
-        currentData={currentData}
-        setCurrentData={setCurrentData}
-      />
-      <Items currentData={currentData} />
+      <div className={blk("content")}>
+        <TopTen originalData={originalData} />
+        <Controls 
+          originalData={originalData}
+          currentData={currentData}
+          setCurrentData={setCurrentData}
+        />
+        <Items currentData={currentData} />
+      </div>
     </div>
   );
 }
