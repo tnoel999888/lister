@@ -102,7 +102,7 @@ function Item({ name, rating, review }) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h3>Review</h3>
+            <h3>{name} - { Math.round(rating/10*2)/2 }/10 { getRatingInfo(rating).emoji }</h3>
             <p>{review}</p>
           </div>
         </Fade>

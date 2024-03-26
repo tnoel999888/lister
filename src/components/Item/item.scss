@@ -1,7 +1,12 @@
 .item {
     white-space: nowrap;
-    margin: 8px;
     text-align: justify;
+    margin-right: 12px;
+    margin-bottom: 12px;
+
+    &__rating {
+        font-size: 15px;
+    }
 
     &__card {
         color: white;
@@ -22,10 +27,11 @@
 }
 
 .MuiIconButton-root {
+    color: rgb(238, 238, 238) !important;
     padding: 0 !important;
 }
 
 .MuiIconButton-root:hover {
-    color: black !important;
+    color: white !important;
 }
 

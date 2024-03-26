@@ -14,10 +14,12 @@ const blk = block(CSS_BLOCK_NAME);
 function Controls({ originalData, currentData, setCurrentData }) {
   return (
     <div className={blk()}>
-      <Search originalData={originalData} setCurrentData={setCurrentData} />
-      <Filters originalData={originalData} setCurrentData={setCurrentData} />
-      <Sort currentData={currentData} setCurrentData={setCurrentData} />
-      <Divider style={{ margin: "12px 0px 8px 0px" }} />
+      <div className={blk("container")}>
+        <Search originalData={originalData} setCurrentData={setCurrentData} />
+        <Filters originalData={originalData} setCurrentData={setCurrentData} />
+        <Sort currentData={currentData} setCurrentData={setCurrentData} />
+      </div>
+      <Divider style={{ margin: "12px 0px 12px 0px", height: "2px" }} />
     </div>
   );
 }

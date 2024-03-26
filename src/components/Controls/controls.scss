@@ -1,5 +1,8 @@
 .controls {
-    width: 100%;
-    padding: 0px 8px;
+    &__container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 }
 
