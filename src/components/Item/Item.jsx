@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from "prop-types";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import CloseIcon from '@material-ui/icons/Close';
 import RateReview from '@material-ui/icons/RateReview';
 import { getRatingInfo, ratingsColours } from '../consts';
 import IconButton  from '@material-ui/core/IconButton';
@@ -102,7 +103,16 @@ function Item({ name, rating, review }) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h3>{name} - { Math.round(rating/10*2)/2 }/10 { getRatingInfo(rating).emoji }</h3>
+            <div className={blk("modal-header")}>
+              <span className={blk("modal-title")}>
+                <h3>{name} - { Math.round(rating/10*2)/2 }/10 { getRatingInfo(rating).emoji }</h3>
+              </span>
+              <span className={blk("modal-close")}>
+                <IconButton onClick={handleClose}>
+                  <CloseIcon />
+                </IconButton>
+              </span>
+            </div>
             <p>{review}</p>
           </div>
         </Fade>
