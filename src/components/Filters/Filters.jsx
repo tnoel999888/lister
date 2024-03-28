@@ -79,7 +79,7 @@ function Filters({ originalData, setCurrentData }) {
                 setCurrentData(originalData.filter(([,,,rank]) => selectedFilters[rank])); 
               }}
             >
-              { RATINGS_INFO[rank].name } { RATINGS_INFO[rank].emoji } ({ ratings[rank] })
+              { RATINGS_INFO[rank].emoji } ({ ratings[rank] })
             </Button>
           )}
         )}
