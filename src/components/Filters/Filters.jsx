@@ -28,14 +28,16 @@ function Filters({ originalData, setCurrentData }) {
     }
   });
 
-  // Set all btn as selected if no other btns selected
+  // Set all btn as selected if no filters or all filters selected
   useEffect(() => {
-    setAllBtnSelected(!Object.values(selectedFilters).length);
+    const filters = Object.values(selectedFilters);
+    setAllBtnSelected(!filters.length || filters.length === Object.values(RATINGS_INFO).length);
   }, [selectedFilters]);
 
   useEffect(() => {
     if (allBtnSelected) {
       setCurrentData(originalData);
+      setSelectedFilters({});
     }
   }, [allBtnSelected, originalData, setCurrentData]);
 
