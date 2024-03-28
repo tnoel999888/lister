@@ -5,7 +5,6 @@ import Icon from '@mdi/react';
 import { mdiSortCalendarAscending, mdiSortCalendarDescending, mdiSortAlphabeticalAscendingVariant, mdiFilterVariant  } from '@mdi/js';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
-import Divider from '@material-ui/core/Divider';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -110,11 +109,13 @@ function Sort({ currentData, setCurrentData }) {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          { Object.values(SORT_MODES).map(mode => (
-            <MenuItem onClick={mode.handler}>
-              <span className={blk("menu-item-icon")}>{mode.icon}</span>
-              <ListItemText primary={mode.label} />
-            </MenuItem >
+          { Object.values(SORT_MODES).map((mode, index) => (
+            <div key={index}>
+              <MenuItem onClick={mode.handler}>
+                <span className={blk("menu-item-icon")}>{mode.icon}</span>
+                <ListItemText primary={mode.label} />
+              </MenuItem >
+            </div>
           ))}
         </Menu>
       </div>
