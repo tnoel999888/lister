@@ -20,6 +20,15 @@
         margin-left: 8px;
         float: right;
     }
+
+    &__modal-header {
+      display: flex;
+    }
+
+    &__modal-close {
+      margin-left: auto;
+      margin-top: 18px;
+    }
 }
 
 .MuiCardContent-root {
