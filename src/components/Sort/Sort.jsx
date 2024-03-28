@@ -16,26 +16,7 @@ const CSS_BLOCK_NAME = 'sort';
 const blk = block(CSS_BLOCK_NAME);
 
 function Sort({ currentData, setCurrentData }) {
-  const SORT_MODES = {
-    reverseChronological: {
-      id: "reverseChronological",
-      label: "Reverse Chronological"
-    },
-    chronological: {
-      id: "chronological",
-      label: "Chronological"
-    },
-    alphabetical: {
-      id: "alphabetical",
-      label: "Alphabetical"
-    },
-    ratingsGrouped: {
-      id: "ratingsGrouped",
-      label: "Ratings Grouped"
-    },
-  }
 
-  const [value, setValue] = useState(SORT_MODES.reverseChronological);
   const [anchorEl, setAnchorEl] = React.useState(null);
   
   const handleClick = (event) => {
@@ -47,29 +28,63 @@ function Sort({ currentData, setCurrentData }) {
   };
 
   const onReverseChronological = () => {
+    setCurrentIcon(SORT_MODES.reverseChronological.icon);
     setCurrentData([...currentData].sort(([,,,,index1],[,,,,index2]) => index1 - index2));
     setValue(SORT_MODES.reverseChronological);
     handleClose();
   }
 
   const onChronological = () => {
+    setCurrentIcon(SORT_MODES.chronological.icon);
     setCurrentData([...currentData].sort(([,,,,index1],[,,,,index2]) => index2 - index1));
     setValue(SORT_MODES.chronological);
     handleClose();
   }
 
   const onAlphabetical = () => {
+    setCurrentIcon(SORT_MODES.alphabetical.icon);
     setCurrentData([...currentData].sort());
     setValue(SORT_MODES.alphabetical);
     handleClose();
   }
 
   const onRatingsGrouped = () => {
+    setCurrentIcon(SORT_MODES.ratingsGrouped.icon);
     setCurrentData([...currentData].sort((a,b) => a[1].localeCompare(b[1])).reverse());
     setValue(SORT_MODES.ratingsGrouped);
     handleClose();
   }
+
+  const SORT_MODES = {
+    reverseChronological: {
+      id: "reverseChronological",
+      label: "New → Old",
+      handler: onReverseChronological,
+      icon: <Icon path={mdiSortCalendarAscending} size={1} />
+    },
+    chronological: {
+      id: "chronological",
+      label: "Old → New",
+      handler: onChronological,
+      icon: <Icon path={mdiSortCalendarDescending} size={1} />
+    },
+    alphabetical: {
+      id: "alphabetical",
+      label: "Alphabetical",
+      handler: onAlphabetical,
+      icon: <Icon path={mdiSortAlphabeticalAscendingVariant} size={1} />
+    },
+    ratingsGrouped: {
+      id: "ratingsGrouped",
+      label: "Ranked",
+      handler: onRatingsGrouped,
+      icon: <Icon path={mdiFilterVariant} size={1} />
+    },
+  }
   
+  const [value, setValue] = useState(SORT_MODES.reverseChronological);
+  const [currentIcon, setCurrentIcon] = React.useState(SORT_MODES.chronological.icon);
+
   return (
     <div className={blk()}>
       <div>
@@ -78,9 +93,13 @@ function Sort({ currentData, setCurrentData }) {
           aria-haspopup="true"
           variant="contained"
           color="primary"
+          style={{ height: "36px", width: "201px" }}
           onClick={handleClick}
         >
-          { value.label }
+          <span className={blk("menu-content")}>
+            <span className={blk("menu-icon")}>{ currentIcon }</span>
+            <span className={blk("menu-label")}>{ value.label }</span>
+          </span>
           <ArrowDropDownIcon />
         </Button>
 
@@ -91,25 +110,12 @@ function Sort({ currentData, setCurrentData }) {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={onReverseChronological}>
-            <span className={blk("icon")}><Icon path={mdiSortCalendarAscending} size={1} /></span>
-            <ListItemText primary="Reverse Chronological" />
-          </MenuItem >
-          <Divider />
-          <MenuItem onClick={onChronological}>
-            <span className={blk("icon")}><Icon path={mdiSortCalendarDescending} size={1} /></span>
-            <ListItemText primary="Chronological" />
-          </MenuItem >
-          <Divider />
-          <MenuItem onClick={onAlphabetical}>
-            <span className={blk("icon")}><Icon path={mdiSortAlphabeticalAscendingVariant} size={1} /></span>
-            <ListItemText primary="Alphabetical" />
-          </MenuItem >
-          <Divider />
-          <MenuItem onClick={onRatingsGrouped}>
-            <span className={blk("icon")}><Icon path={mdiFilterVariant} size={1} /></span>
-            <ListItemText primary="Ranked" />
-          </MenuItem >
+          { Object.values(SORT_MODES).map(mode => (
+            <MenuItem onClick={mode.handler}>
+              <span className={blk("menu-item-icon")}>{mode.icon}</span>
+              <ListItemText primary={mode.label} />
+            </MenuItem >
+          ))}
         </Menu>
       </div>
     </div>

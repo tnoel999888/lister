@@ -10,9 +10,19 @@
         float: right;
     }
 
-    &__icon {
-        margin-right: 12px;
-        padding-top: 6px;
+    &__menu-content {
+      margin-right: auto;
+      display: flex;
+    }
+
+    &__menu-label {
+      display: inline-flex;
+    }
+
+    &__menu-icon,
+    &__menu-item-icon {
+      margin-right: 12px;
+      display: inline-flex;
     }
 }
 
