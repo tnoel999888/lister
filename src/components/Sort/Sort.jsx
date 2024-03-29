@@ -26,63 +26,50 @@ function Sort({ currentData, setCurrentData }) {
     setAnchorEl(null);
   };
 
-  const onReverseChronological = () => {
-    setCurrentIcon(SORT_MODES.reverseChronological.icon);
-    setCurrentData([...currentData].sort(([,,,,index1],[,,,,index2]) => index1 - index2));
-    setValue(SORT_MODES.reverseChronological);
-    handleClose();
-  }
-
-  const onChronological = () => {
-    setCurrentIcon(SORT_MODES.chronological.icon);
-    setCurrentData([...currentData].sort(([,,,,index1],[,,,,index2]) => index2 - index1));
-    setValue(SORT_MODES.chronological);
-    handleClose();
-  }
-
-  const onAlphabetical = () => {
-    setCurrentIcon(SORT_MODES.alphabetical.icon);
-    setCurrentData([...currentData].sort());
-    setValue(SORT_MODES.alphabetical);
-    handleClose();
-  }
-
-  const onRatingsGrouped = () => {
-    setCurrentIcon(SORT_MODES.ratingsGrouped.icon);
-    setCurrentData([...currentData].sort((a,b) => a[1].localeCompare(b[1])).reverse());
-    setValue(SORT_MODES.ratingsGrouped);
-    handleClose();
-  }
-
   const SORT_MODES = {
     reverseChronological: {
       id: "reverseChronological",
       label: "New → Old",
-      handler: onReverseChronological,
+      handler: () => {
+        setCurrentData([...currentData].sort(([,,,,index1],[,,,,index2]) => index1 - index2));
+        setValue(SORT_MODES.reverseChronological);
+        handleClose();
+      },
       icon: <Icon path={mdiSortCalendarAscending} size={1} />
     },
     chronological: {
       id: "chronological",
       label: "Old → New",
-      handler: onChronological,
+      handler: () => {
+        setCurrentData([...currentData].sort(([,,,,index1],[,,,,index2]) => index2 - index1));
+        setValue(SORT_MODES.chronological);
+        handleClose();
+      },
       icon: <Icon path={mdiSortCalendarDescending} size={1} />
     },
     alphabetical: {
       id: "alphabetical",
       label: "Alphabetical",
-      handler: onAlphabetical,
+      handler: () => {
+        setCurrentData([...currentData].sort());
+        setValue(SORT_MODES.alphabetical);
+        handleClose();
+      },
       icon: <Icon path={mdiSortAlphabeticalAscendingVariant} size={1} />
     },
     ratingsGrouped: {
       id: "ratingsGrouped",
       label: "Ranked",
-      handler: onRatingsGrouped,
+      handler: () => {
+        setCurrentData([...currentData].sort((a,b) => a[1].localeCompare(b[1])).reverse());
+        setValue(SORT_MODES.ratingsGrouped);
+        handleClose();
+      },
       icon: <Icon path={mdiFilterVariant} size={1} />
     },
   }
   
   const [value, setValue] = useState(SORT_MODES.reverseChronological);
-  const [currentIcon, setCurrentIcon] = React.useState(SORT_MODES.chronological.icon);
 
   return (
     <div className={blk()}>
@@ -96,7 +83,7 @@ function Sort({ currentData, setCurrentData }) {
           onClick={handleClick}
         >
           <span className={blk("menu-content")}>
-            <span className={blk("menu-icon")}>{ currentIcon }</span>
+            <span className={blk("menu-icon")}>{ value.icon }</span>
             <span className={blk("menu-label")}>{ value.label }</span>
           </span>
           <ArrowDropDownIcon />

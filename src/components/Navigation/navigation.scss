@@ -1,3 +1,13 @@
+.navigation {
+  &__logo-container {
+    margin: auto;
+  }
+
+  &__logo {
+    width: 185px;
+  }
+}
+
 .MuiAppBar-colorPrimary {
   background-color: #1F96F3 !important
 }
