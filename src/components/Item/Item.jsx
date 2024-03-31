@@ -35,7 +35,7 @@ function Item({ name, rating, review }) {
     },
     paper: {
       backgroundColor: "white",
-      padding: "0 24px",
+      padding: "24px 24px",
       border: '1px solid #000',
       boxShadow: "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
     },
@@ -104,16 +104,14 @@ function Item({ name, rating, review }) {
         <Fade in={open}>
           <div className={classes.paper}>
             <div className={blk("modal-header")}>
-              <span className={blk("modal-title")}>
-                <h3>{name} - { Math.round(rating/10*2)/2 }/10 { getRatingInfo(rating).emoji }</h3>
-              </span>
+              <h3 className={blk("modal-title")}>{name} - { Math.round(rating/10*2)/2 }/10 { getRatingInfo(rating).emoji }</h3>
               <span className={blk("modal-close")}>
                 <IconButton onClick={handleClose}>
                   <CloseIcon />
                 </IconButton>
               </span>
             </div>
-            <p>{review}</p>
+            <p className={blk("modal-review")}>{review}</p>
           </div>
         </Fade>
       </Modal>
