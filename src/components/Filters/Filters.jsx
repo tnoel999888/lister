@@ -43,29 +43,29 @@ function Filters({ originalData, setCurrentData }) {
 
   return (
     <div className={blk()}>
-      <span className={blk("button")}>
-        <Button
-          color="primary" 
-          variant="outlined"
-          style={{ 
-            backgroundColor: selectedBtnBackground(allBtnSelected), 
-            color: selectedBtnTextColor(allBtnSelected), 
-          }}
-          onClick={() => {
-            setSelectedFilters({});
-            setCurrentData(originalData);
-          }}
-        >
-          All ({ originalData.length })
-        </Button>
-      </span>
+      <Button
+        color="primary" 
+        variant="outlined"
+        className="filters-btn"
+        style={{ 
+          backgroundColor: selectedBtnBackground(allBtnSelected), 
+          color: selectedBtnTextColor(allBtnSelected), 
+        }}
+        onClick={() => {
+          setSelectedFilters({});
+          setCurrentData(originalData);
+        }}
+      >
+        All ({ originalData.length })
+      </Button>
 
-      <ButtonGroup color="primary" aria-label="outlined primary button group">
+      <ButtonGroup color="primary" aria-label="outlined primary button group" className="filters-btn-group">
         { Object.keys(ratings).map((rank, index) => {
           return (
             <Button 
               key={index}
               variant="outlined"
+              className="filters-btn"
               style={{ 
                 backgroundColor: selectedBtnBackground(selectedFilters[index]),
                 color: selectedBtnTextColor(selectedFilters[index]), 
