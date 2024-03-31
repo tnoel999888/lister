@@ -15,9 +15,11 @@ function Controls({ originalData, currentData, setCurrentData }) {
   return (
     <div className={blk()}>
       <div className={blk("container")}>
-        <Search originalData={originalData} setCurrentData={setCurrentData} />
+        <div className={blk("top-row")}>
+          <Search originalData={originalData} setCurrentData={setCurrentData} />
+          <Sort currentData={currentData} setCurrentData={setCurrentData} />
+        </div>
         <Filters originalData={originalData} setCurrentData={setCurrentData} />
-        <Sort currentData={currentData} setCurrentData={setCurrentData} />
       </div>
       <Divider style={{ margin: "12px 0px 12px 0px", height: "2px" }} />
     </div>

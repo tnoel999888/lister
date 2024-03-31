@@ -23,11 +23,19 @@
 
     &__modal-header {
       display: flex;
+      margin-bottom: 18px;
     }
 
     &__modal-close {
       margin-left: auto;
-      margin-top: 18px;
+    }
+
+    &__modal-title {
+      margin: 0 0 !important;
+    }
+
+    &__modal-review {
+      margin: 0 0 !important;
     }
 }
 

@@ -29,8 +29,8 @@ function Search({ originalData, setCurrentData }) {
       padding: '2px 4px',
       display: 'flex',
       alignItems: 'center',
-      width: 300,
       height: 32,
+      width: '100%'
     },
     input: {
       marginLeft: theme.spacing(1),
@@ -38,10 +38,6 @@ function Search({ originalData, setCurrentData }) {
     },
     iconButton: {
       padding: 10,
-    },
-    divider: {
-      height: 28,
-      margin: 4,
     },
   }));
 
@@ -55,6 +51,7 @@ function Search({ originalData, setCurrentData }) {
           onChange={onSearch}
           placeholder="Search..."
           inputProps={{ 'aria-label': 'search' }}
+          fullWidth
         />
         <IconButton type="submit" aria-label="search" className={classes.iconButton} >
           <SearchIcon />
