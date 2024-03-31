@@ -61,11 +61,14 @@ function Filters({ originalData, setCurrentData }) {
 
       <ButtonGroup color="primary" aria-label="outlined primary button group" className="filters-btn-group">
         { Object.keys(ratings).map((rank, index) => {
+          const ratingInfo = RATINGS_INFO[rank];
+
           return (
             <Button 
               key={index}
               variant="outlined"
               className="filters-btn"
+              title={ratingInfo.name}
               style={{ 
                 backgroundColor: selectedBtnBackground(selectedFilters[index]),
                 color: selectedBtnTextColor(selectedFilters[index]), 
@@ -81,7 +84,7 @@ function Filters({ originalData, setCurrentData }) {
                 setCurrentData(originalData.filter(([,,,rank]) => selectedFilters[rank])); 
               }}
             >
-              { RATINGS_INFO[rank].emoji } ({ ratings[rank] })
+              { ratingInfo.emoji } ({ ratings[rank] })
             </Button>
           )}
         )}

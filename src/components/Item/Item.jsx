@@ -57,6 +57,8 @@ function Item({ name, rating, review }) {
     setOpen(false);
   };
 
+  const ratingInfo = getRatingInfo(rating);
+
   return (
     <div className={blk()}>
       <Card 
@@ -78,7 +80,7 @@ function Item({ name, rating, review }) {
           </span>
           <div>
             <span className={blk("rating")}>{ Math.round(rating/10*2)/2 }/10</span>
-            <span className={blk("emoji")}>{ getRatingInfo(rating).emoji }</span>
+            <span className={blk("emoji")} title={ratingInfo.name}>{ ratingInfo.emoji }</span>
             { review !== "" ? 
               <span className={blk("review")}>
                 <IconButton onClick={handleOpen}>
