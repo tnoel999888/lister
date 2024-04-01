@@ -78,8 +78,7 @@ function Sort({ currentData, setCurrentData }) {
           aria-controls="customized-menu"
           aria-haspopup="true"
           variant="contained"
-          color="primary"
-          style={{ height: "36px", width: "201px" }}
+          style={{ height: "36px", width: "201px", backgroundColor: "#1F96F3", color: "white" }}
           onClick={handleClick}
         >
           <span className={blk("menu-content")}>
