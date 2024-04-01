@@ -16,6 +16,11 @@ function Main({ ratingsFile }) {
 
   const [currentData, setCurrentData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
+  let dataLoaded = false;
+
+  if (currentData.length) {
+    dataLoaded = true;
+  }
 
   const papaConfig = {
     skipEmptyLines: true,
@@ -39,11 +44,11 @@ function Main({ ratingsFile }) {
 
   useEffect(() => {
     Papa.parse(ratingsFile, papaConfig);
-  }, [ratingsFile]);
+  }, [ratingsFile, papaConfig]);
 
   return (
     <div className={blk()}>
-      { currentData.length ?
+      { dataLoaded ?
         <div className={blk("content")}>
           <TopTen originalData={originalData} />
           <Controls 
