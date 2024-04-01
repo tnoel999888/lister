@@ -12,7 +12,7 @@ const blk = block(CSS_BLOCK_NAME);
 
 function Filters({ originalData, setCurrentData }) {
 
-  const selectedBtnBackground = (selected) => selected ? "#4fcdff" : "white";
+  const selectedBtnBackground = (selected) => selected ? "#1F96F3" : "white";
   const selectedBtnTextColor = (selected) => selected ? "white" : "";
   const ratings = {};
   const [selectedFilters, setSelectedFilters] = useState({});
