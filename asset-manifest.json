@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/lister/static/css/main.b667e994.css",
-    "main.js": "/lister/static/js/main.a8fc3ea8.js",
+    "main.css": "/lister/static/css/main.50418e69.css",
+    "main.js": "/lister/static/js/main.4bc330e9.js",
     "static/js/453.fd856770.chunk.js": "/lister/static/js/453.fd856770.chunk.js",
     "static/media/lister-logo-rectangle.jpg": "/lister/static/media/lister-logo-rectangle.6a12e52339d5991bd795.jpg",
     "static/media/movie-ratings.csv": "/lister/static/media/movie-ratings.3e2de72bf76d9b3f3f5f.csv",
@@ -9,12 +9,12 @@
     "static/media/tv-ratings.csv": "/lister/static/media/tv-ratings.cf5969f312f3a427da3b.csv",
     "static/media/book-ratings.csv": "/lister/static/media/book-ratings.0f59b9d71cf2c7d46987.csv",
     "index.html": "/lister/index.html",
-    "main.b667e994.css.map": "/lister/static/css/main.b667e994.css.map",
-    "main.a8fc3ea8.js.map": "/lister/static/js/main.a8fc3ea8.js.map",
+    "main.50418e69.css.map": "/lister/static/css/main.50418e69.css.map",
+    "main.4bc330e9.js.map": "/lister/static/js/main.4bc330e9.js.map",
     "453.fd856770.chunk.js.map": "/lister/static/js/453.fd856770.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b667e994.css",
-    "static/js/main.a8fc3ea8.js"
+    "static/css/main.50418e69.css",
+    "static/js/main.4bc330e9.js"
   ]
 }
