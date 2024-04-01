@@ -18,3 +18,16 @@
   }
 
 }
+
+.controls-vertical-divider-1,
+.controls-vertical-divider-2 {
+  margin: 0px 12px !important; 
+  width: 2px !important;
+  height: 36px !important;
+}
+
+@media only screen and (max-width: 1252px) {
+  .controls-vertical-divider-2 {
+    display: none;
+  }
+}

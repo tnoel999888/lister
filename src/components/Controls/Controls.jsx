@@ -17,11 +17,13 @@ function Controls({ originalData, currentData, setCurrentData }) {
       <div className={blk("container")}>
         <div className={blk("top-row")}>
           <Search originalData={originalData} setCurrentData={setCurrentData} />
+          <Divider className="controls-vertical-divider-1" orientation='vertical' />
           <Sort currentData={currentData} setCurrentData={setCurrentData} />
+          <Divider className="controls-vertical-divider-2" orientation='vertical' />
         </div>
         <Filters originalData={originalData} setCurrentData={setCurrentData} />
       </div>
-      <Divider style={{ margin: "12px 0px 12px 0px", height: "2px" }} />
+      <Divider style={{ margin: "16px 0px", height: "2px" }} />
     </div>
   );
 }
