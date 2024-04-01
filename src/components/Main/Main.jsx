@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Items } from "../Items"
-import { Controls } from "../Controls"
-import { TopTen } from "../TopTen"
+import { Items } from "../Items";
+import { Controls } from "../Controls";
+import { TopTen } from "../TopTen";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { block } from 'bem-cn';
 import { getRatingInfo } from '../consts';
 import Papa from "papaparse";
@@ -42,15 +43,18 @@ function Main({ ratingsFile }) {
 
   return (
     <div className={blk()}>
-      <div className={blk("content")}>
-        <TopTen originalData={originalData} />
-        <Controls 
-          originalData={originalData}
-          currentData={currentData}
-          setCurrentData={setCurrentData}
-        />
-        <Items currentData={currentData} />
-      </div>
+      { currentData.length ?
+        <div className={blk("content")}>
+          <TopTen originalData={originalData} />
+          <Controls 
+            originalData={originalData}
+            currentData={currentData}
+            setCurrentData={setCurrentData}
+          />
+          <Items currentData={currentData} />
+        </div>
+        : <CircularProgress size={80} style={{ margin: "auto", color: "#1F96F3" }}/>
+      }
     </div>
   );
 }

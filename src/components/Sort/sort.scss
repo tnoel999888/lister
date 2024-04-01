@@ -1,10 +1,6 @@
 .sort {
     display: inline-flex;
     
-    @media only screen and (min-width: 1252px) {
-      // margin-right: 24px;
-    }
-
     &__radio-group,
     &__total-label {
         display: inline-flex;

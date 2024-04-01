@@ -58,6 +58,7 @@ function Item({ name, rating, review }) {
   };
 
   const ratingInfo = getRatingInfo(rating);
+  const ratingOutOfTen = Math.round(rating/10*2)/2;
 
   return (
     <div className={blk()}>
@@ -79,7 +80,7 @@ function Item({ name, rating, review }) {
             { name }
           </span>
           <div>
-            <span className={blk("rating")}>{ Math.round(rating/10*2)/2 }/10</span>
+            <span className={blk("rating")}>{ ratingOutOfTen }/10</span>
             <span className={blk("emoji")} title={ratingInfo.name}>{ ratingInfo.emoji }</span>
             { review !== "" ? 
               <span className={blk("review")}>
@@ -106,7 +107,7 @@ function Item({ name, rating, review }) {
         <Fade in={open}>
           <div className={classes.paper}>
             <div className={blk("modal-header")}>
-              <h3 className={blk("modal-title")}>{name} - { Math.round(rating/10*2)/2 }/10 { getRatingInfo(rating).emoji }</h3>
+              <h3 className={blk("modal-title")}>{name} - { ratingOutOfTen }/10 { ratingInfo.emoji }</h3>
               <span className={blk("modal-close")}>
                 <IconButton onClick={handleClose}>
                   <CloseIcon />
