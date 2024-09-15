@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { block } from 'bem-cn';
-import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from "prop-types";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -17,30 +16,6 @@ const CSS_BLOCK_NAME = 'item';
 const blk = block(CSS_BLOCK_NAME);
 
 function Item({ name, rating, review }) {
-
-  const useStyles = makeStyles({
-    root: {
-      maxWidth: 310,
-      transition: "transform 0.15s ease-in-out"
-    },
-    cardHovered: {
-      transform: "scale3d(1.05, 1.05, 1)"
-    },
-    modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      maxWidth: "400px",
-      margin: "auto",
-    },
-    paper: {
-      backgroundColor: "white",
-      padding: "24px 24px",
-      border: '1px solid #000',
-      boxShadow: "0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12)",
-    },
-  });
-  const classes = useStyles();
 
   const [state, setState] = useState({
     raised: false,
@@ -63,13 +38,12 @@ function Item({ name, rating, review }) {
   return (
     <div className={blk()}>
       <Card 
-        className={classes.root}
+        className={blk("root") + state.raised ? blk("card-hovered") : "" }
         style={{
           backgroundColor: ratingsColours[rating],
           color: "#ffffff",
           maxWidth: "fit-content"
         }}
-        classes={{ root: state.raised ? classes.cardHovered : "" }}
         onMouseOver={() => setState({ raised: true, shadow: 3 })} 
         onMouseOut={() => setState({ raised: false, shadow: 1 })} 
         raised={state.raised} 
@@ -95,7 +69,7 @@ function Item({ name, rating, review }) {
 
       { review ?
       <Modal
-        className={classes.modal}
+        className={blk("modal")}
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -105,7 +79,7 @@ function Item({ name, rating, review }) {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
+          <div className={blk("paper")}>
             <div className={blk("modal-header")}>
               <h3 className={blk("modal-title")}>{name} - { ratingOutOfTen }/10 { ratingInfo.emoji }</h3>
               <span className={blk("modal-close")}>

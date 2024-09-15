@@ -9,7 +9,6 @@ const CSS_BLOCK_NAME = 'items';
 const blk = block(CSS_BLOCK_NAME);
 
 function Items({ currentData }) {
-
   return (
     <div className={blk()}>
       {currentData

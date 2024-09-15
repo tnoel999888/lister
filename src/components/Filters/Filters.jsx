@@ -41,8 +41,26 @@ function Filters({ originalData, setCurrentData }) {
     }
   }, [allBtnSelected, originalData, setCurrentData]);
 
+  const onAllBtnClick = () => {
+    setSelectedFilters({});
+    setCurrentData(originalData);
+  }
+
+  const onIndividualFilterBtnClick = (index) => {
+    const selectedFiltersCopy = {...selectedFilters};
+    if (selectedFiltersCopy[index] !== undefined) {
+      delete selectedFiltersCopy[index];
+    } else {
+      selectedFiltersCopy[index] = true;
+    }
+
+    setSelectedFilters(selectedFiltersCopy);
+    setCurrentData(originalData.filter(([,,,rank]) => selectedFiltersCopy[rank])); 
+  }
+
   return (
     <div className={blk()}>
+      {/* All button */}
       <Button
         color="primary" 
         variant="outlined"
@@ -51,14 +69,12 @@ function Filters({ originalData, setCurrentData }) {
           backgroundColor: selectedBtnBackground(allBtnSelected), 
           color: selectedBtnTextColor(allBtnSelected), 
         }}
-        onClick={() => {
-          setSelectedFilters({});
-          setCurrentData(originalData);
-        }}
+        onClick={onAllBtnClick}
       >
         All ({ originalData.length })
       </Button>
 
+      {/* Individual filter btns */}
       <ButtonGroup color="primary" aria-label="outlined primary button group" className="filters-btn-group">
         { Object.keys(ratings).map((rank, index) => {
           const ratingInfo = RATINGS_INFO[rank];
@@ -73,16 +89,7 @@ function Filters({ originalData, setCurrentData }) {
                 backgroundColor: selectedBtnBackground(selectedFilters[index]),
                 color: selectedBtnTextColor(selectedFilters[index]), 
               }}
-              onClick={() => {
-                if (selectedFilters[index] !== undefined) {
-                  delete selectedFilters[index];
-                } else {
-                  selectedFilters[index] = true;
-                }
-
-                setSelectedFilters({...selectedFilters});
-                setCurrentData(originalData.filter(([,,,rank]) => selectedFilters[rank])); 
-              }}
+              onClick={() => onIndividualFilterBtnClick(index)}
             >
               { ratingInfo.emoji } ({ ratings[rank] })
             </Button>

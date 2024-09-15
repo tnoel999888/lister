@@ -22,29 +22,30 @@ function Main({ ratingsFile }) {
     dataLoaded = true;
   }
 
-  const papaConfig = {
-    skipEmptyLines: true,
-    download: true,
-    complete: (results) => {
-      results.data.shift(); // remove header line
-      const reversedData = [...results.data].reverse(); // reverse chronological order
-      reversedData.map((data, index) => {
-        const rating = data[1];
-        const ratingInfo = getRatingInfo(rating);
-        data.push(ratingInfo.rank);
-        return data.push(index);
-      });
-      setOriginalData(reversedData);
-      setCurrentData(reversedData);
-    },
-    error: (error, file) => {
-      console.log('Error while parsing:', error, file);
-    },
-  };
-
   useEffect(() => {
-    Papa.parse(ratingsFile, papaConfig);
-  }, [ratingsFile, papaConfig]);
+    Papa.parse(
+      ratingsFile, 
+      {
+        skipEmptyLines: true,
+        download: true,
+        complete: (results) => {
+          results.data.shift(); // remove header line
+          const reversedData = [...results.data].reverse(); // reverse chronological order
+          reversedData.map((data, index) => {
+            const rating = data[1];
+            const ratingInfo = getRatingInfo(rating);
+            data.push(ratingInfo.rank);
+            return data.push(index);
+          });
+          setOriginalData(reversedData);
+          setCurrentData(reversedData);
+        },
+        error: (error, file) => {
+          console.log('Error while parsing:', error, file);
+        },
+      }
+    );
+  }, [ratingsFile]);
 
   return (
     <div className={blk()}>
