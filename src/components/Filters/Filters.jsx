@@ -55,7 +55,12 @@ function Filters({ originalData, setCurrentData }) {
     }
 
     setSelectedFilters(selectedFiltersCopy);
-    setCurrentData(originalData.filter(([,,,rank]) => selectedFiltersCopy[rank])); 
+
+    if (Object.keys(selectedFiltersCopy).length) {
+      setCurrentData(originalData.filter(([,,,rank]) => selectedFiltersCopy[rank])); 
+    } else {
+      setCurrentData(originalData);
+    }
   }
 
   return (
