@@ -1,6 +1,5 @@
 import React from 'react';
 import { block } from 'bem-cn';
-import { makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
@@ -20,40 +19,21 @@ function Search({ originalData, setCurrentData }) {
     if (inputStr === "") {
       setCurrentData([...originalData]);
     } else {
-      setCurrentData([...originalData].filter(data => data[0].toLowerCase().includes(inputStr)));
+      setCurrentData([...originalData].filter(data => data[0].toLowerCase().includes(inputStr.toLowerCase())));
     }
   }
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      padding: '2px 4px',
-      display: 'flex',
-      alignItems: 'center',
-      height: 32,
-      width: '100%'
-    },
-    input: {
-      marginLeft: theme.spacing(1),
-      flex: 1,
-    },
-    iconButton: {
-      padding: 10,
-    },
-  }));
-
-  const classes = useStyles();
-
   return (
     <div className={blk()}>
-      <Paper component="form" className={classes.root}>
+      <Paper component="form" className="search-root">
         <InputBase
-          className={classes.input}
+          className="search-input"
           onChange={onSearch}
           placeholder="Search..."
           inputProps={{ 'aria-label': 'search' }}
           fullWidth
         />
-        <IconButton type="submit" aria-label="search" className={classes.iconButton} >
+        <IconButton type="submit" aria-label="search" className="search-icon-btn">
           <SearchIcon />
         </IconButton>
       </Paper>

@@ -8,6 +8,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  /* always show vertical scroll bar so content doesn't jump around when dataset is reduced via filtering */
+  overflow-y: scroll;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

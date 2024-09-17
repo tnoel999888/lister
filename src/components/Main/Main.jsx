@@ -18,7 +18,7 @@ function Main({ ratingsFile }) {
   const [originalData, setOriginalData] = useState([]);
   let dataLoaded = false;
 
-  if (currentData.length) {
+  if (originalData.length) {
     dataLoaded = true;
   }
 
@@ -59,7 +59,10 @@ function Main({ ratingsFile }) {
           />
           <Items currentData={currentData} />
         </div>
-        : <CircularProgress size={80} style={{ margin: "auto", color: "#1F96F3" }}/>
+        : 
+        <div className={blk("loading-spinner")}>
+          <CircularProgress size={80} style={{ margin: "auto", color: "#1F96F3" }}/>
+        </div>
       }
     </div>
   );
