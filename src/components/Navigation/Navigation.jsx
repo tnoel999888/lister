@@ -44,7 +44,7 @@ function Navigation({ setFile }) {
 
   return (
     <div className={blk()}>
-      <AppBar>
+      <AppBar position="static">
         <Toolbar>
           <div className={blk("logo-container")}>
             <img src={logo} className={blk("logo")} alt="Lister Logo" />
