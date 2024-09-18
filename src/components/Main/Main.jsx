@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Items } from "../Items";
 import { Controls } from "../Controls";
-import { TopTen } from "../TopTen";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { block } from 'bem-cn';
 import { getRatingInfo } from '../consts';
@@ -51,7 +50,6 @@ function Main({ ratingsFile }) {
     <div className={blk()}>
       { dataLoaded ?
         <div className={blk("content")}>
-          <TopTen originalData={originalData} />
           <Controls 
             originalData={originalData}
             currentData={currentData}

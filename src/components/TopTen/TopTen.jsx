@@ -8,6 +8,7 @@ import './topTen.scss';
 const CSS_BLOCK_NAME = 'topTen';
 const blk = block(CSS_BLOCK_NAME);
 
+// THIS COMPONENT IS CURRENTLY UNUSED
 function TopTen({ originalData }) {
 
   const getTopTen = () => {
@@ -17,7 +18,7 @@ function TopTen({ originalData }) {
   return (
     <div className={blk()}>
       <div className={blk("label")}>
-        <span >Top 10:</span>
+        <span>Top 10:</span>
       </div>
       <div className={blk("items")}>
         { getTopTen().map(([name, rating, review]) => (

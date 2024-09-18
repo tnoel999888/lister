@@ -21,3 +21,9 @@
 .MuiPaper-elevation4 {
   box-shadow: 2px 2px 3px #888, -2px 2px 3px #888 !important;
 }
+
+@media only screen and (max-width: 600px) {
+  .MuiTab-root {
+    font-size: 12px !important;
+  }
+}
