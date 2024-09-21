@@ -33,17 +33,17 @@
       margin-right: 12px;
       display: inline-flex;
     }
-}
-
-@media only screen and (max-width: 525px) {
-  .sort-btn {
-      padding: 12px !important;
   }
 
-  .sort {
-    &__label {
-        font-size: 12px;
-        margin-bottom: 6px;
+  @media only screen and (max-width: 525px) {
+    .sort-btn {
+        padding: 12px !important;
     }
-}
+
+    .sort {
+      &__label {
+          font-size: 12px;
+          margin-bottom: 6px;
+      }
+  }
 }

@@ -4,6 +4,7 @@ import { Controls } from "../Controls";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { block } from 'bem-cn';
 import { getRatingInfo } from '../consts';
+import Divider from '@material-ui/core/Divider';
 import Papa from "papaparse";
 
 import './main.scss';
@@ -55,6 +56,7 @@ function Main({ ratingsFile }) {
             currentData={currentData}
             setCurrentData={setCurrentData}
           />
+          <Divider className="main-divider" />
           <Items currentData={currentData} />
         </div>
         : 
