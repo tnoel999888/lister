@@ -1,5 +1,12 @@
 .filters {
     display: inline-flex;
+
+    &__label {
+        color: white;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
 }
 
 .filters-btn-group {
@@ -35,6 +42,13 @@
 @media only screen and (max-width: 525px) {
     .filters-btn {
         padding: 8px !important;
+    }
+
+    .filters {
+        &__label {
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
     }
 
     .MuiButton-label {

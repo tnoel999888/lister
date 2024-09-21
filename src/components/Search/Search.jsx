@@ -25,11 +25,12 @@ function Search({ originalData, setCurrentData }) {
 
   return (
     <div className={blk()}>
+      <span className={blk("label")}>Search:</span>
       <Paper component="form" className="search-root">
         <InputBase
           className="search-input"
           onChange={onSearch}
-          placeholder="Search..."
+          placeholder="Enter text..."
           inputProps={{ 'aria-label': 'search' }}
           fullWidth
         />

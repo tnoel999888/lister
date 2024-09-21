@@ -59,43 +59,47 @@ function Filters({ originalData, setCurrentData }) {
   }
 
   return (
-    <div className={blk()}>
-      {/* All button */}
-      <Button
-        color="primary" 
-        variant="outlined"
-        className="filters-btn"
-        style={{ 
-          backgroundColor: selectedBtnBackground(allBtnSelected), 
-          color: selectedBtnTextColor(allBtnSelected), 
-        }}
-        onClick={onAllBtnClick}
-      >
-        All ({ originalData.length })
-      </Button>
+    <div>
+      <span className={blk("label")}>Filter:</span>
 
-      {/* Individual filter btns */}
-      <ButtonGroup color="primary" aria-label="outlined primary button group" className="filters-btn-group">
-        { Object.keys(ratings).map((rank, index) => {
-          const ratingInfo = RATINGS_INFO[rank];
+      <div className={blk()}>
+        {/* All button */}
+        <Button
+          color="primary" 
+          variant="outlined"
+          className="filters-btn"
+          style={{ 
+            backgroundColor: selectedBtnBackground(allBtnSelected), 
+            color: selectedBtnTextColor(allBtnSelected), 
+          }}
+          onClick={onAllBtnClick}
+        >
+          All ({ originalData.length })
+        </Button>
 
-          return (
-            <Button 
-              key={index}
-              variant="outlined"
-              className="filters-btn"
-              title={ratingInfo.name}
-              style={{ 
-                backgroundColor: selectedBtnBackground(selectedFilters[index]),
-                color: selectedBtnTextColor(selectedFilters[index]), 
-              }}
-              onClick={() => onIndividualFilterBtnClick(index)}
-            >
-              { ratingInfo.emoji } ({ ratings[rank] })
-            </Button>
+        {/* Individual filter btns */}
+        <ButtonGroup color="primary" aria-label="outlined primary button group" className="filters-btn-group">
+          { Object.keys(ratings).map((rank, index) => {
+            const ratingInfo = RATINGS_INFO[rank];
+
+            return (
+              <Button 
+                key={index}
+                variant="outlined"
+                className="filters-btn"
+                title={ratingInfo.name}
+                style={{ 
+                  backgroundColor: selectedBtnBackground(selectedFilters[index]),
+                  color: selectedBtnTextColor(selectedFilters[index]), 
+                }}
+                onClick={() => onIndividualFilterBtnClick(index)}
+              >
+                { ratingInfo.emoji } ({ ratings[rank] })
+              </Button>
+            )}
           )}
-        )}
-      </ButtonGroup> 
+        </ButtonGroup> 
+      </div>
     </div>
   );
 }

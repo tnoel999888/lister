@@ -1,5 +1,12 @@
 .sort {
-    display: inline-flex;
+    display: block;
+
+    &__label {
+      color: white;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
     
     &__radio-group,
     &__total-label {
@@ -32,4 +39,11 @@
   .sort-btn {
       padding: 12px !important;
   }
+
+  .sort {
+    &__label {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+}
 }

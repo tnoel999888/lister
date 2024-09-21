@@ -73,6 +73,8 @@ function Sort({ currentData, setCurrentData }) {
 
   return (
     <div className={blk()}>
+      <span className={blk("label")}>Sort:</span>
+      
       <div>
         <Button
           aria-controls="customized-menu"
