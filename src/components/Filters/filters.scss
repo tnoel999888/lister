@@ -1,6 +1,5 @@
 .filters {
     display: inline-flex;
-    width: 100%;
 }
 
 .filters-btn-group {
@@ -14,6 +13,10 @@
 }
 
 @media only screen and (max-width: 1252px) {
+    .filters {
+        width: 100%;
+    }
+
     .filters-btn-group {
         width: 100%;
     }
