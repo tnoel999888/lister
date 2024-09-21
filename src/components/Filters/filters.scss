@@ -7,6 +7,12 @@
     margin-left: 12px;
 }
 
+@media only screen and (min-width: 1252px) {
+    .filters {
+        min-width: 698px;
+    }
+}
+
 @media only screen and (max-width: 1252px) {
     .filters-btn-group {
         width: 100%;
@@ -15,6 +21,7 @@
     .filters-all-btn,
     .filters-btn {
         width: 14.5%;
+        padding: 8px !important;
     }
 
     .MuiButton-label {
@@ -22,9 +29,19 @@
     }
 }
 
-@media only screen and (min-width: 1252px) {
-    .filters {
-        min-width: 698px;
+@media only screen and (max-width: 525px) {
+    .filters-btn {
+        padding: 8px !important;
+    }
+
+    .MuiButton-label {
+        font-size: 11px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .filters-btn {
+        padding: 4px !important;
     }
 }
 

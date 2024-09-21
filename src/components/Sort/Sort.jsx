@@ -79,6 +79,7 @@ function Sort({ currentData, setCurrentData }) {
           aria-haspopup="true"
           variant="contained"
           style={{ height: "36px", width: "201px", backgroundColor: "#1F96F3", color: "white" }}
+          className="sort-btn"
           onClick={handleClick}
         >
           <span className={blk("menu-content")}>
