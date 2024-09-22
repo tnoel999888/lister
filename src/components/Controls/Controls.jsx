@@ -23,7 +23,6 @@ function Controls({ originalData, currentData, setCurrentData }) {
         </div>
         <Filters originalData={originalData} setCurrentData={setCurrentData} />
       </div>
-      <Divider style={{ margin: "12px 0 16px 0", height: "2px" }} />
     </div>
   );
 }

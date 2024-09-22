@@ -1,5 +1,7 @@
 .controls {
-  width: 100%;
+  background-color: #6a6868;
+  padding: 8px 12px 12px 12px;
+  border-radius: 5px;
 
   &__container {
     width: 100%;
@@ -27,7 +29,22 @@
 }
 
 @media only screen and (max-width: 1252px) {
+  .controls {
+    padding: 4px 12px 12px 12px;
+  }
+
   .controls-vertical-divider-2 {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .controls {
+    padding: 2px 12px 12px 12px;
+  }
+
+  .controls-vertical-divider-1,
+  .controls-vertical-divider-2 {
+    height: 56px !important;
   }
 }
