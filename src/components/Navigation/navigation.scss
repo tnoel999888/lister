@@ -1,13 +1,23 @@
 .navigation {
-  height: 112px;
+  height: 106px;
   
   &__logo-container {
     margin: auto;
+    padding: 6px 0 0 0;
   }
 
   &__logo {
     width: 185px;
   }
+}
+
+.MuiTabs-root {
+  min-height: 37px !important;
+}
+
+.MuiTab-root {
+  padding: 0 12px !important;
+  min-height: 37px !important;
 }
 
 .MuiAppBar-colorPrimary {
