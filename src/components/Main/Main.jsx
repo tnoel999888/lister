@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Items } from "../Items";
 import { Controls } from "../Controls";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { block } from 'bem-cn';
 import { getRatingInfo } from '../consts';
 import Divider from '@material-ui/core/Divider';
+import PropTypes from "prop-types";
 import Papa from "papaparse";
+
+import { connect } from "react-redux";
+import { setCurrentData, setOriginalData } from "../../reducers/rootReducer";
 
 import './main.scss';
 
 const CSS_BLOCK_NAME = 'main';
 const blk = block(CSS_BLOCK_NAME);
 
-function Main({ ratingsFile }) {
+function Main({ ratingsFile, setCurrentData, originalData, setOriginalData }) {
 
-  const [currentData, setCurrentData] = useState([]);
-  const [originalData, setOriginalData] = useState([]);
   let dataLoaded = false;
 
   if (originalData.length) {
@@ -45,19 +47,15 @@ function Main({ ratingsFile }) {
         },
       }
     );
-  }, [ratingsFile]);
+  }, [ratingsFile, setCurrentData, setOriginalData]);
 
   return (
     <div className={blk()}>
       { dataLoaded ?
         <div className={blk("content")}>
-          <Controls 
-            originalData={originalData}
-            currentData={currentData}
-            setCurrentData={setCurrentData}
-          />
+          <Controls />
           <Divider className="main-divider" />
-          <Items currentData={currentData} />
+          <Items />
         </div>
         : 
         <div className={blk("loading-spinner")}>
@@ -68,4 +66,20 @@ function Main({ ratingsFile }) {
   );
 }
 
-export default Main;
+Main.propTypes = {
+  ratingsFile: PropTypes.string.isRequired,
+  setCurrentData: PropTypes.func.isRequired,
+  originalData: PropTypes.array.isRequired,
+  setOriginalData: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  originalData: state.originalData, 
+});
+
+const mapDispatchToProps = {
+  setOriginalData,
+  setCurrentData,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -9,6 +9,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
+import { connect } from "react-redux";
+import { setCurrentData } from "../../reducers/rootReducer";
+
 import './sort.scss';
 
 const CSS_BLOCK_NAME = 'sort';
@@ -116,4 +119,12 @@ Sort.propTypes = {
   setCurrentData: PropTypes.func.isRequired,
 };
 
-export default Sort;
+const mapStateToProps = (state) => ({
+  currentData: state.currentData, 
+});
+
+const mapDispatchToProps = {
+  setCurrentData,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sort);
