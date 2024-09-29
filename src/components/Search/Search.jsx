@@ -6,6 +6,9 @@ import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from "prop-types";
 
+import { connect } from "react-redux";
+import { setCurrentData } from "../../reducers/rootReducer";
+
 import './search.scss';
 
 const CSS_BLOCK_NAME = 'search';
@@ -47,4 +50,12 @@ Search.propTypes = {
   setCurrentData: PropTypes.func.isRequired,
 };
 
-export default Search;
+const mapStateToProps = (state) => ({
+  originalData: state.originalData, 
+});
+
+const mapDispatchToProps = {
+  setCurrentData,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

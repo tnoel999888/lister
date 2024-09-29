@@ -15,8 +15,8 @@
     "bem-cn": "^3.0.1",
     "node-sass": "7.0.0",
     "papaparse": "^5.4.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.2"
   },
@@ -47,6 +47,10 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "@reduxjs/toolkit": "^2.2.7",
+    "gh-pages": "^6.1.1",
+    "react-redux": "^9.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^3.1.0"
   }
 }

@@ -5,12 +5,21 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import PropTypes from "prop-types";
 import { RATINGS_INFO, getRatingInfo } from '../consts';
 
+import { connect } from "react-redux";
+import { setCurrentData } from "../../reducers/rootReducer";
+// import { setCurrentData, setSelectedFilters } from "../../reducers/rootReducer";
+
 import './filters.scss';
 
 const CSS_BLOCK_NAME = 'filters';
 const blk = block(CSS_BLOCK_NAME);
 
-function Filters({ originalData, setCurrentData }) {
+function Filters({ 
+  originalData, 
+  setCurrentData, 
+  // selectedFilters, 
+  // setSelectedFilters 
+}) {
 
   const selectedBtnBackground = (selected) => selected ? "#1F96F3" : "white";
   const selectedBtnTextColor = (selected) => selected ? "white" : "";
@@ -107,6 +116,18 @@ function Filters({ originalData, setCurrentData }) {
 Filters.propTypes = {
   originalData: PropTypes.array.isRequired,
   setCurrentData: PropTypes.func.isRequired,
+  // selectedFilters: PropTypes.object.isRequired,
+  // setSelectedFilters: PropTypes.func.isRequired,
 };
 
-export default Filters;
+const mapStateToProps = (state) => ({
+  originalData: state.originalData, 
+  // selectedFilters: state.selectedFilters, 
+});
+
+const mapDispatchToProps = {
+  setCurrentData,
+  // setSelectedFilters,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);

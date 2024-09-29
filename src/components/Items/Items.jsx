@@ -3,6 +3,8 @@ import { block } from 'bem-cn';
 import { Item } from "../Item"
 import PropTypes from "prop-types";
 
+import { connect } from "react-redux";
+
 import './items.scss';
 
 const CSS_BLOCK_NAME = 'items';
@@ -22,7 +24,8 @@ function Items({ currentData }) {
               />
             )
           }
-        )}
+        )
+      }
     </div>
   );
 }
@@ -31,4 +34,8 @@ Items.propTypes = {
   currentData: PropTypes.array.isRequired,
 };
 
-export default Items;
+const mapStateToProps = (state) => ({
+  currentData: state.currentData, 
+});
+
+export default connect(mapStateToProps)(Items);
