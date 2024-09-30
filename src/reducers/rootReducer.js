@@ -6,7 +6,7 @@ export const rootReducer = createSlice({
   initialState: {
     originalData: [],
     currentData: [],
-    // selectedFilters: {},
+    selectedFilters: {},
   },
   
   reducers: {
@@ -16,9 +16,9 @@ export const rootReducer = createSlice({
     setOriginalData: (state, action) => {
       state.originalData = action.payload;
     },
-    // setSelectedFilters: (state, action) => {
-      // state.selectedFilters = action.selectedFilters;
-    // }
+    setSelectedFilters: (state, action) => {
+      state.selectedFilters = action.payload;
+    }
   },
 })
 
@@ -26,7 +26,7 @@ export const rootReducer = createSlice({
 export const { 
   setCurrentData, 
   setOriginalData,
-  // setSelectedFilters, 
+  setSelectedFilters, 
 } = rootReducer.actions
 
 export default rootReducer.reducer
