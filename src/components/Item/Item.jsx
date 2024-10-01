@@ -22,7 +22,7 @@ function Item({ name, rating, review }) {
     shadow: 1,
   })
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -34,11 +34,12 @@ function Item({ name, rating, review }) {
 
   const ratingInfo = getRatingInfo(rating);
   const ratingOutOfTen = Math.round(rating/10*2)/2;
+  const raisedClass = state.raised ? (" " + blk("card-hovered")) : "";
 
   return (
     <div className={blk()}>
       <Card 
-        className={blk("root") + state.raised ? blk("card-hovered") : "" }
+        className={blk("root") + raisedClass }
         style={{
           backgroundColor: ratingsColours[rating],
           color: "#ffffff",
