@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/lister/static/css/main.654a542b.css",
-    "main.js": "/lister/static/js/main.ed3548b9.js",
+    "main.css": "/lister/static/css/main.c68cd6d0.css",
+    "main.js": "/lister/static/js/main.f11c28ed.js",
     "static/js/453.fd856770.chunk.js": "/lister/static/js/453.fd856770.chunk.js",
     "static/media/lister-logo-rectangle.jpg": "/lister/static/media/lister-logo-rectangle.6a12e52339d5991bd795.jpg",
-    "static/media/movie-ratings.csv": "/lister/static/media/movie-ratings.78a16bf58fe11e3685c1.csv",
+    "static/media/movie-ratings.csv": "/lister/static/media/movie-ratings.2b45be05a5fb87d24ab3.csv",
     "static/media/restaurant-ratings.csv": "/lister/static/media/restaurant-ratings.47c7c6acc24b081e3c0c.csv",
     "static/media/tv-ratings.csv": "/lister/static/media/tv-ratings.0c028bbce42d1eefef90.csv",
     "static/media/book-ratings.csv": "/lister/static/media/book-ratings.1e3582c099c8e945740c.csv",
     "index.html": "/lister/index.html",
-    "main.654a542b.css.map": "/lister/static/css/main.654a542b.css.map",
-    "main.ed3548b9.js.map": "/lister/static/js/main.ed3548b9.js.map",
+    "main.c68cd6d0.css.map": "/lister/static/css/main.c68cd6d0.css.map",
+    "main.f11c28ed.js.map": "/lister/static/js/main.f11c28ed.js.map",
     "453.fd856770.chunk.js.map": "/lister/static/js/453.fd856770.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.654a542b.css",
-    "static/js/main.ed3548b9.js"
+    "static/css/main.c68cd6d0.css",
+    "static/js/main.f11c28ed.js"
   ]
 }
