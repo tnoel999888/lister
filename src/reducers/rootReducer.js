@@ -7,6 +7,7 @@ export const rootReducer = createSlice({
     originalData: [],
     currentData: [],
     selectedFilters: {},
+    histogramData: [],
   },
   
   reducers: {
@@ -18,7 +19,10 @@ export const rootReducer = createSlice({
     },
     setSelectedFilters: (state, action) => {
       state.selectedFilters = action.payload;
-    }
+    },
+    setHistogramData: (state, action) => {
+      state.histogramData = action.payload;
+    },
   },
 })
 
@@ -26,7 +30,8 @@ export const rootReducer = createSlice({
 export const { 
   setCurrentData, 
   setOriginalData,
-  setSelectedFilters, 
+  setSelectedFilters,
+  setHistogramData,
 } = rootReducer.actions
 
 export default rootReducer.reducer

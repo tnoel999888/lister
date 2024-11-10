@@ -82,7 +82,7 @@ function Sort({ currentData, setCurrentData }) {
         <Button
           aria-controls="customized-menu"
           aria-haspopup="true"
-          variant="contained"
+          variant="outlined"
           className="sort-btn"
           onClick={handleClick}
         >

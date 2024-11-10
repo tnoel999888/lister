@@ -5,44 +5,44 @@
     margin-bottom: 12px;
 
     &__root {
-        max-width: 310;
-        transition: transform 0.15s ease-in-out;
+      max-width: 310;
+      transition: transform 0.15s ease-in-out;
     }
 
     &__card-hovered {
-        transform: scale3d(1.05, 1.05, 1);
+      transform: scale3d(1.05, 1.05, 1);
     }
 
     &__paper {
-        background-color: white;
-        padding: 24px 24px;
-        border: 1px solid #000;
-        box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+      background-color: white;
+      padding: 18px 18px;
+      border: 1px solid #000;
+      box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
     }
 
     &__modal {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-width: 400px;
-        margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 400px;
+      margin: auto;
     }
 
     &__rating {
-        font-size: 15px;
+      font-size: 15px;
     }
 
     &__card {
-        color: white;
+      color: white;
     }
 
     &__emoji {
-        margin-left: 8px;
+      margin-left: 8px;
     }
 
     &__review {
-        margin-left: 8px;
-        float: right;
+      margin-left: 8px;
+      float: right;
     }
 
     &__modal-header {
