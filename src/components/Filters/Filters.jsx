@@ -21,7 +21,7 @@ function Filters({
 }) {
 
   const selectedBtnBackground = (selected) => selected ? "#1F96F3" : "white";
-  const selectedBtnTextColor = (selected) => selected ? "white" : "";
+  const selectedBtnTextColor = (selected) => selected ? "white" : "#4f4e4e";
   const ratings = {};
   const [allBtnSelected, setAllBtnSelected] = useState(true);
 
@@ -74,7 +74,7 @@ function Filters({
         <Button
           color="primary" 
           variant="outlined"
-          className="filters-btn"
+          className="filters-all-btn"
           style={{ 
             backgroundColor: selectedBtnBackground(allBtnSelected), 
             color: selectedBtnTextColor(allBtnSelected), 

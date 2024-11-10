@@ -7,15 +7,6 @@
     margin-bottom: 8px;
     font-size: 14px;
   }
-  
-  &__radio-group,
-  &__total-label {
-      display: inline-flex;
-  }
-
-  &__total-label {
-      float: right;
-  }
 
   &__menu-content {
     margin-right: auto;
@@ -38,13 +29,13 @@
 .sort-btn {
   height: 36px !important;
   width: 201px !important;
-  background-color: #1F96F3 !important;
-  color: white !important;
+  background-color: white !important;
+  color: #4f4e4e !important;
 }
 
 @media only screen and (max-width: 525px) {
   .sort-btn {
-    width: 175px !important; 
+    width: 164px !important; 
     padding: 8px !important;
   }
 

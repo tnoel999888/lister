@@ -1,6 +1,7 @@
 import React from 'react';
 import { Search } from "../Search";
 import { Sort } from "../Sort";
+import { Stats } from "../Stats";
 import { Filters } from "../Filters";
 import { block } from 'bem-cn';
 import Divider from '@material-ui/core/Divider';
@@ -19,6 +20,8 @@ function Controls() {
           <Divider className="controls-vertical-divider-1" orientation='vertical' />
           <Sort />
           <Divider className="controls-vertical-divider-2" orientation='vertical' />
+          <Stats />
+          <Divider className="controls-vertical-divider-3" orientation='vertical' />
         </div>
         <Filters />
       </div>
