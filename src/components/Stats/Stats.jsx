@@ -29,6 +29,11 @@ function Stats({ histogramData }) {
     setOpen(false);
   };
 
+  const totalRatings = histogramData.reduce((partialSum, a) => partialSum + a, 0);
+  const numRatings = histogramData.length;
+  const averageRating = totalRatings/numRatings
+  const averageRatingRounded = Math.round(averageRating * 10) / 10
+
   const plotlyState = {
     data: [
         { 
@@ -96,6 +101,7 @@ function Stats({ histogramData }) {
                             style={plotlyState.style}
                             useResizeHandler={true}
                         />
+                        <span>Average: {averageRatingRounded}</span>
                     </div>
                 </div>
             </Fade>
