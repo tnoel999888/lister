@@ -26,7 +26,7 @@ function Filters({
   const [allBtnSelected, setAllBtnSelected] = useState(true);
 
   // Get count for each rating group
-  originalData.forEach(([,rating,]) => {
+  originalData.forEach(([name, rating, review, date, rank, index]) => {
     const ratingInfo = getRatingInfo(rating);
     if (ratings[ratingInfo.rank]) {
       ratings[ratingInfo.rank]++;
@@ -62,7 +62,7 @@ function Filters({
     }
 
     setSelectedFilters(selectedFiltersCopy);
-    setCurrentData(originalData.filter(([,,,rank]) => selectedFiltersCopy[rank])); 
+    setCurrentData(originalData.filter(([name, rating, review, date, rank, index]) => selectedFiltersCopy[rank])); 
   }
 
   return (

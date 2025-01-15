@@ -15,7 +15,7 @@ import './item.scss';
 const CSS_BLOCK_NAME = 'item';
 const blk = block(CSS_BLOCK_NAME);
 
-function Item({ name, rating, review }) {
+function Item({ index, name, rating, review }) {
 
   const [state, setState] = useState({
     raised: false,
@@ -51,9 +51,10 @@ function Item({ name, rating, review }) {
         zdepth={state.shadow}
       >
         <CardContent>
-          <span className={blk("title")}>
-            { name }
-          </span>
+          <div>
+            <span className={blk("title")}>{ name }</span>
+            <span className={blk("index")}>#{ index }</span>
+          </div>
           <div>
             <span className={blk("rating")}>{ ratingOutOfTen }/10</span>
             <span className={blk("emoji")} title={ratingInfo.name}>{ ratingInfo.emoji }</span>

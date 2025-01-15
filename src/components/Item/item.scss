@@ -61,6 +61,13 @@
     &__modal-review {
       margin: 0 0 !important;
     }
+
+    &__index {
+      margin-left: 12px;
+      font-size: 14px;
+      float: right;
+      color: #ffffff96;
+    }
 }
 
 .MuiCardContent-root {
@@ -80,6 +87,11 @@
     
     &__rating {
       font-size: 11px;
+    }
+
+    &__index {
+      font-size: 11px;
+      transform: translateY(10%);
     }
   }
 }

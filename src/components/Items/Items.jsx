@@ -10,14 +10,15 @@ import './items.scss';
 const CSS_BLOCK_NAME = 'items';
 const blk = block(CSS_BLOCK_NAME);
 
-function Items({ currentData }) {
+function Items({ currentData, originalData }) {
   return (
     <div className={blk()}>
       {currentData
-        .map(([name, rating, review]) => {
+        .map(([name, rating, review, date, rank, index]) => {
             return (
               <Item 
                 key={name}
+                index={originalData.length - index}
                 name={name}
                 rating={rating}
                 review={review}
@@ -32,10 +33,12 @@ function Items({ currentData }) {
 
 Items.propTypes = {
   currentData: PropTypes.array.isRequired,
+  originalData: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   currentData: state.currentData, 
+  originalData: state.originalData, 
 });
 
 export default connect(mapStateToProps)(Items);

@@ -21,7 +21,7 @@ function TopTen({ originalData }) {
         <span>Top 10:</span>
       </div>
       <div className={blk("items")}>
-        { getTopTen().map(([name, rating, review]) => (
+        { getTopTen().map(([name, rating, review, date, rank, index]) => (
           <Item 
             key={name}
             name={name}
