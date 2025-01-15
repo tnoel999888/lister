@@ -9,14 +9,14 @@ import PropTypes from "prop-types";
 import Papa from "papaparse";
 
 import { connect } from "react-redux";
-import { setCurrentData, setOriginalData, setHistogramData } from "../../reducers/rootReducer";
+import { setCurrentData, setOriginalData, setRatingsHistogramData, setDatesHistogramData } from "../../reducers/rootReducer";
 
 import './main.scss';
 
 const CSS_BLOCK_NAME = 'main';
 const blk = block(CSS_BLOCK_NAME);
 
-function Main({ ratingsFile, setCurrentData, originalData, setOriginalData, setHistogramData }) {
+function Main({ ratingsFile, setCurrentData, originalData, setOriginalData, setRatingsHistogramData, setDatesHistogramData }) {
 
   let dataLoaded = false;
 
@@ -36,21 +36,29 @@ function Main({ ratingsFile, setCurrentData, originalData, setOriginalData, setH
 
           // Reverse chronological order default
           const reversedData = [...results.data].reverse(); 
-          const histogramData = [];
+          const ratingsHistogramData = [];
+          const datesHistogramData = [];
 
           // Add rank number and index to each data entry
           reversedData.map((data, index) => {
             const rating = data[1];
+            const date = data[3];
+            if (date) {
+                const dateParts = date.split('-');
+                const year = dateParts[2];
+                datesHistogramData.push(year);
+            }
 
             // Add to histogram array, ceil used to create bucket size of 1
-            histogramData.push(Math.ceil(rating / 10));
+            ratingsHistogramData.push(Math.ceil(rating / 10));
 
             const ratingInfo = getRatingInfo(rating);
             data.push(ratingInfo.rank);
             return data.push(index);
           });
 
-          setHistogramData(histogramData);
+          setRatingsHistogramData(ratingsHistogramData);
+          setDatesHistogramData(datesHistogramData);
           setOriginalData(reversedData);
           setCurrentData(reversedData);
         },
@@ -59,7 +67,7 @@ function Main({ ratingsFile, setCurrentData, originalData, setOriginalData, setH
         },
       }
     );
-  }, [ratingsFile, setCurrentData, setOriginalData, setHistogramData]);
+  }, [ratingsFile, setCurrentData, setOriginalData, setRatingsHistogramData, setDatesHistogramData]);
 
   return (
     <div className={blk()}>
@@ -92,7 +100,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setOriginalData,
   setCurrentData,
-  setHistogramData,
+  setRatingsHistogramData,
+  setDatesHistogramData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
