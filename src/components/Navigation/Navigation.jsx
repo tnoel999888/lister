@@ -28,24 +28,77 @@ function Navigation({ setFile, setSelectedFilters }) {
     onTabChange(newValue)
   }
 
+  const TABS = {
+      films: {
+          name: "Films",
+          file: moviesFile,
+          path: "films",
+          index: 0,
+      },
+      tv: {
+          name: "TV Shows",
+          file: tvShowsFile,
+          path: "tv",
+          index: 1,
+      },
+      books: {
+          name: "Books",
+          file: booksFile,
+          path: "books",
+          index: 2,
+      },
+      restaurants: {
+          name: "Restaurants",
+          file: restaurantsFile,
+          path: "restaurants",
+          index: 3,
+      },
+  }
+
   const onTabChange = (value) => {
     if (value === 0) {
-      setFile(moviesFile);
+      setFile(TABS.films.file);
+      setUrlParam(TABS.films.path);
     }
     if (value === 1) {
-      setFile(tvShowsFile);
+      setFile(TABS.tv.file);
+      setUrlParam(TABS.tv.path);
     }
     if (value === 2) {
-      setFile(booksFile);
+      setFile(TABS.books.file);
+      setUrlParam(TABS.books.path);
     }
     if (value === 3) {
-      setFile(restaurantsFile);
+      setFile(TABS.restaurants.file);
+      setUrlParam(TABS.restaurants.path);
     }
   }
 
+  const setUrlParam = (param) => {
+      window.history.pushState('', '', '/lister/' + param);
+  }
+
   useEffect(() => {
-    onTabChange(0);
-  }, []);
+      // If URL is missing a page param or trailing slash at the end then add one so page loads correctly
+      const urlParts = window.location.href.split('/');
+      const lastPart = urlParts[urlParts.length - 1];
+      if (lastPart === "lister") {
+          window.history.pushState('', '', '/');
+      }
+
+      const newLastPart = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+      if (!newLastPart) {
+          // If there's no page param then default to the first tab (Films)
+          handleChange(null, 0);
+      } else {
+          // If there is a page param then load that specific page
+          const tab = TABS[lastPart];
+          if (tab) {
+              handleChange(null, tab.index);
+          }
+      }
+
+  }, [onTabChange]);
 
   return (
     <div className={blk()}>
@@ -61,10 +114,10 @@ function Navigation({ setFile, setSelectedFilters }) {
           onChange={handleChange} 
           centered
         >
-          <Tab label="Films" />
-          <Tab label="TV Shows" />
-          <Tab label="Books" />
-          <Tab label="Restaurants" />
+          <Tab label={TABS.films.name} />
+          <Tab label={TABS.tv.name} />
+          <Tab label={TABS.books.name} />
+          <Tab label={TABS.restaurants.name} />
         </Tabs>
       </AppBar>
     </div>
