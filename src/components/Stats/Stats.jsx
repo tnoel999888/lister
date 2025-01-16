@@ -52,7 +52,7 @@ function Stats({ ratingsHistogramData, datesHistogramData }) {
 
   const plotlyDefaults = {
       layout: {
-          margin: {'t': 30,'l': 50,'b': 50,'r': 50 },
+          margin: {'t': 30,'l': 70,'b': 50,'r': 30 },
           bargap: 0.01,
           autosize: true
       },
@@ -91,8 +91,8 @@ function Stats({ ratingsHistogramData, datesHistogramData }) {
         },
         ...plotlyDefaults.layout,
     },
-    ...plotlyDefaults.config,
-    ...plotlyDefaults.style,
+    config: plotlyDefaults.config,
+    style: plotlyDefaults.style,
   };
 
   const datesGraph = {
@@ -120,8 +120,8 @@ function Stats({ ratingsHistogramData, datesHistogramData }) {
         },
         ...plotlyDefaults.layout,
     },
-    ...plotlyDefaults.config,
-    ...plotlyDefaults.style,
+    config: plotlyDefaults.config,
+    style: plotlyDefaults.style,
   };
 
   const datesClicked = () => {
@@ -174,42 +174,46 @@ function Stats({ ratingsHistogramData, datesHistogramData }) {
                         </span>
                     </div>
 
-                    <ButtonGroup
-                        variant="outlined"
-                        color="primary"
-                        aria-label="text primary button group"
-                    >
-                      <Button
-                          size='small'
-                          onClick={ratingsClicked}
-                          style={{
-                              backgroundColor: ratingsSelected ? "#1F96F3" : "inherit",
-                              color: ratingsSelected ? "white" : "#4f4e4e",
-                          }}
-                      >
-                        Ratings
-                      </Button>
-                      <Button
-                          size='small'
-                          onClick={datesClicked}
-                          style={{
-                              backgroundColor: datesSelected ? "#1F96F3" : "inherit",
-                              color: datesSelected ? "white" : "#4f4e4e",
-                          }}
-                      >
-                        Dates
-                      </Button>
-                    </ButtonGroup>
+                    <div className={blk("button-group")}>
+                        <ButtonGroup
+                            variant="outlined"
+                            color="primary"
+                            aria-label="text primary button group"
+                        >
+                          <Button
+                              size='small'
+                              onClick={ratingsClicked}
+                              style={{
+                                  backgroundColor: ratingsSelected ? "#1F96F3" : "inherit",
+                                  color: ratingsSelected ? "white" : "#4f4e4e",
+                              }}
+                          >
+                            Ratings
+                          </Button>
+                          <Button
+                              size='small'
+                              onClick={datesClicked}
+                              style={{
+                                  backgroundColor: datesSelected ? "#1F96F3" : "inherit",
+                                  color: datesSelected ? "white" : "#4f4e4e",
+                              }}
+                          >
+                            Years
+                          </Button>
+                        </ButtonGroup>
+                    </div>
 
                     { ratingsSelected ?
                         <div>
-                            <Plot
-                                data={ratingsAvgGraph.data}
-                                layout={ratingsAvgGraph.layout}
-                                config={ratingsAvgGraph.config}
-                                style={ratingsAvgGraph.style}
-                                useResizeHandler={true}
-                            />
+                            <div className={blk("graph")}>
+                                <Plot
+                                    data={ratingsAvgGraph.data}
+                                    layout={ratingsAvgGraph.layout}
+                                    config={ratingsAvgGraph.config}
+                                    style={ratingsAvgGraph.style}
+                                    useResizeHandler={true}
+                                />
+                            </div>
                             <span>Average: {averageRatingRounded}</span>
                         </div>
                         : null
@@ -217,14 +221,16 @@ function Stats({ ratingsHistogramData, datesHistogramData }) {
 
                     { datesSelected ?
                         <div>
-                            <Plot
-                                title="Per Year"
-                                data={datesGraph.data}
-                                layout={datesGraph.layout}
-                                config={datesGraph.config}
-                                style={datesGraph.style}
-                                useResizeHandler={true}
-                            />
+                            <div className={blk("graph")}>
+                                <Plot
+                                    title="Per Year"
+                                    data={datesGraph.data}
+                                    layout={datesGraph.layout}
+                                    config={datesGraph.config}
+                                    style={datesGraph.style}
+                                    useResizeHandler={true}
+                                />
+                            </div>
                             <span>Average: {averagePerYearRounded}</span>
                         </div>
                         : null
