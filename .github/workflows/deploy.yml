@@ -13,21 +13,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17 ]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+      name: Build with node version ${{ matrix.node-version }}
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Download our master branch
+        - name: Checkout repository
+          uses: actions/checkout@v3
 
-    # Download our master branch
-    steps:
-    - uses: actions/checkout@v2
+        - name: Setup node
+          uses: actions/setup-node@v3
+          with:
+            node-version: ${{ matrix.node-version }}
 
-    - name: Install
-      run: npm install --legacy-peer-deps
+        - name: Install
+          run: npm install --legacy-peer-deps
 
-    - name: Build
-      run: npm run build
-    
-    # Run our deployment command
-    - name: Deploying the static website to gh-pages
-      run: |
-        git config --global url.https://${{ secrets.ACTIONS_DEPLOY }}@github.com/.insteadOf https://github.com/
-        git config --global user.email "tnoel7@msn.com"
-        git config --global user.name "Timan Noel"
-        npm run deploy
+        - name: Build
+          run: npm run build
+
+        # Run our deployment command
+        - name: Deploying the static website to gh-pages
+          run: |
+            git config --global url.https://${{ secrets.ACTIONS_DEPLOY }}@github.com/.insteadOf https://github.com/
+            git config --global user.email "tnoel7@msn.com"
+            git config --global user.name "Timan Noel"
+            npm run deploy
