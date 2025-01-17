@@ -83,7 +83,7 @@ function Navigation({ setFile, setSelectedFilters }) {
       const urlParts = window.location.href.split('/');
       const lastPart = urlParts[urlParts.length - 1];
       if (lastPart === "lister") {
-          window.history.pushState('', '', '/');
+          window.location.href += '/';
       }
 
       const newLastPart = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
