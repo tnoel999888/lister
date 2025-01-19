@@ -9,6 +9,7 @@ import { getRatingInfo, ratingsColours } from '../consts';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import './item.scss';
 
@@ -32,6 +33,13 @@ function Item({ index, name, rating, review }) {
     setOpen(false);
   };
 
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+  };
+
   const ratingInfo = getRatingInfo(rating);
   const ratingOutOfTen = Math.round(rating/10*2)/2;
   const raisedClass = state.raised ? (" " + blk("card-hovered")) : "";
@@ -45,7 +53,7 @@ function Item({ index, name, rating, review }) {
           color: "#ffffff",
           maxWidth: "fit-content"
         }}
-        onMouseOver={() => setState({ raised: true, shadow: 3 })} 
+        onMouseOver={() => setState({ raised: true, shadow: 3 })}
         onMouseOut={() => setState({ raised: false, shadow: 1 })} 
         raised={state.raised} 
         zdepth={state.shadow}
@@ -75,23 +83,21 @@ function Item({ index, name, rating, review }) {
         open={open}
         onClose={handleClose}
         closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
       >
         <Fade in={open}>
-          <div className={blk("paper")}>
-            <div className={blk("modal-header")}>
-              <h3 className={blk("modal-title")}>{name} - { ratingOutOfTen }/10 { ratingInfo.emoji }</h3>
-              <span className={blk("modal-close")}>
-                <IconButton onClick={handleClose}>
-                  <CloseIcon />
-                </IconButton>
-              </span>
+          <Box sx={style}>
+            <div className={blk("paper")}>
+              <div className={blk("modal-header")}>
+                <h3 className={blk("modal-title")}>{name} - { ratingOutOfTen }/10 { ratingInfo.emoji }</h3>
+                <span className={blk("modal-close")}>
+                  <IconButton onClick={handleClose}>
+                    <CloseIcon />
+                  </IconButton>
+                </span>
+              </div>
+              <p className={blk("modal-review")}>{review}</p>
             </div>
-            <p className={blk("modal-review")}>{review}</p>
-          </div>
+          </Box>
         </Fade>
       </Modal>
       : null
