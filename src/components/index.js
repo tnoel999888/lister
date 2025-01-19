@@ -3,7 +3,7 @@ import { Main } from "./Main";
 import { Item } from "./Item";
 
 export {
-  Navigation,
-  Main,
-  Item
-}
+    Navigation,
+    Main,
+    Item
+};

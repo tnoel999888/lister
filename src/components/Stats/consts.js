@@ -1,6 +1,6 @@
 export const plotlyDefaults = {
     layout: {
-        margin: {'t': 30,'l': 70,'b': 50,'r': 30 },
+        margin: {"t": 30,"l": 70,"b": 50,"r": 30 },
         bargap: 0.01,
         autosize: true
     },

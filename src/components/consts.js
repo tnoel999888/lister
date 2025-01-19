@@ -28,7 +28,7 @@ const emojis = {
     praise: "🙌",
     love: "❤️",
     trophy: "🏆",
-}
+};
 
 export const RATINGS_INFO = {
     0: {
@@ -66,7 +66,7 @@ export const RATINGS_INFO = {
         emoji: emojis.trophy,
         rank: 6,
     },
-}
+};
 
 export const getRatingInfo = (rating) => {
     if (rating <= 15) {
@@ -90,4 +90,4 @@ export const getRatingInfo = (rating) => {
     if (rating <= 99) {
         return RATINGS_INFO[6];
     }
-}
+};
