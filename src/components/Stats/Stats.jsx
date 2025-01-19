@@ -39,7 +39,7 @@ function Stats({ }) {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    maxWidth: "85%",
+    maxWidth: "90%",
     transform: 'translate(-50%, -50%)',
   };
 

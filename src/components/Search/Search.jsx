@@ -29,7 +29,7 @@ function Search({ originalData, setCurrentData }) {
   return (
     <div className={blk()}>
       <span className={blk("label")}>Search:</span>
-      <Paper component="form" className="search-root">
+      <Paper component="form" elevation={0} className="search-root">
         <InputBase
           className="search-input"
           onChange={onSearch}
