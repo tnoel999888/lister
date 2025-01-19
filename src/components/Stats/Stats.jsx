@@ -4,12 +4,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Plot from 'react-plotly.js';
 import Icon from '@mdi/react';
-import IconButton  from '@material-ui/core/IconButton';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import CloseIcon from '@material-ui/icons/Close';
-import { Button, ButtonGroup } from '@material-ui/core';
+import IconButton from '@mui/material/IconButton';
+import Modal from '@mui/material/Modal';
+import Backdrop from '@mui/material/Backdrop';
+import Fade from '@mui/material/Fade';
+import Close from '@mui/icons-material/Close';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import { mdiChartBar } from '@mdi/js';
 
 import './stats.scss';
@@ -169,7 +170,7 @@ function Stats({ ratingsHistogramData, datesHistogramData }) {
                         <h3 className={blk("modal-title")}>Stats</h3>
                         <span className={blk("modal-close")}>
                         <IconButton onClick={handleClose}>
-                            <CloseIcon />
+                            <Close />
                         </IconButton>
                         </span>
                     </div>

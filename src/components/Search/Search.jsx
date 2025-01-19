@@ -1,9 +1,9 @@
 import React from 'react';
 import { block } from 'bem-cn';
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
-import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import SearchIcon from '@mui/icons-material/Search';
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";

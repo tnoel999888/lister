@@ -20,17 +20,19 @@
   min-height: 37px !important;
 }
 
+// Makes app bar custom blue colour
 .MuiAppBar-colorPrimary {
   background-color: #1F96F3 !important
 }
 
+// Makes selected tab underline White
 .MuiTabs-indicator {
   background-color: #fff !important
 }
 
-.MuiPaper-elevation4 {
-  box-shadow: 2px 2px 3px #888, -2px 2px 3px #888 !important;
-}
+// .MuiPaper-elevation4 {
+//   box-shadow: 2px 2px 3px #888, -2px 2px 3px #888 !important;
+// }
 
 @media only screen and (max-width: 600px) {
   .MuiTab-root {
