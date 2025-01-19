@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Items } from "../Items";
 import { Controls } from "../Controls";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
 import { block } from 'bem-cn';
 import { getRatingInfo } from '../consts';
-import Divider from '@material-ui/core/Divider';
+import Divider from '@mui/material/Divider';
 import PropTypes from "prop-types";
 import Papa from "papaparse";
 
@@ -79,7 +79,7 @@ function Main({ ratingsFile, setCurrentData, originalData, setOriginalData, setR
         </div>
         : 
         <div className={blk("loading-spinner")}>
-          <CircularProgress size={80} style={{ margin: "auto", color: "#1F96F3" }}/>
+          <AutorenewIcon size={80} style={{ margin: "auto", color: "#1F96F3" }}/>
         </div>
       }
     </div>

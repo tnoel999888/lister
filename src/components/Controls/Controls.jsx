@@ -4,7 +4,7 @@ import { Sort } from "../Sort";
 import { Stats } from "../Stats";
 import { Filters } from "../Filters";
 import { block } from 'bem-cn';
-import Divider from '@material-ui/core/Divider';
+import Divider from '@mui/material/Divider';
 
 import './controls.scss';
 

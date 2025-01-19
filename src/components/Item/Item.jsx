@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { block } from 'bem-cn';
 import PropTypes from "prop-types";
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CloseIcon from '@material-ui/icons/Close';
-import RateReview from '@material-ui/icons/RateReview';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CloseIcon from '@mui/icons-material/Close';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 import { getRatingInfo, ratingsColours } from '../consts';
-import IconButton  from '@material-ui/core/IconButton';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import IconButton from '@mui/material/IconButton';
+import Modal from '@mui/material/Modal';
+import Backdrop from '@mui/material/Backdrop';
+import Fade from '@mui/material/Fade';
 import './item.scss';
 
 const CSS_BLOCK_NAME = 'item';
@@ -61,7 +61,7 @@ function Item({ index, name, rating, review }) {
             { review !== "" ? 
               <span className={blk("review")}>
                 <IconButton onClick={handleOpen}>
-                  <RateReview />
+                  <RateReviewIcon />
                 </IconButton >
               </span> : null
             }

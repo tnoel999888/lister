@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { block } from 'bem-cn';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import PropTypes from "prop-types";
 import { RATINGS_INFO, getRatingInfo } from '../consts';
 

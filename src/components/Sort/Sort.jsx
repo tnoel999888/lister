@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { block } from 'bem-cn';
 import Icon from '@mdi/react';
 import { mdiSortCalendarAscending, mdiSortCalendarDescending, mdiSortAlphabeticalAscendingVariant, mdiFilterVariant  } from '@mdi/js';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemText from '@mui/material/ListItemText';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import { connect } from "react-redux";
 import { setCurrentData } from "../../reducers/rootReducer";

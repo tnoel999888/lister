@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Toolbar from '@material-ui/core/Toolbar';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Toolbar from '@mui/material/Toolbar';
 import { block } from 'bem-cn';
 import PropTypes from "prop-types";
 import './navigation.scss';
@@ -83,9 +86,11 @@ function Navigation({ setFile, setSelectedFilters }) {
           </div>
         </Toolbar>
 
-        <Tabs 
-          value={value} 
-          onChange={handleChange} 
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor="white"
+          textColor="white"
           centered
         >
           <Tab label={TABS.films.name} />
