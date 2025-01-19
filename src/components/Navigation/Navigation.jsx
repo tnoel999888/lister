@@ -58,47 +58,21 @@ function Navigation({ setFile, setSelectedFilters }) {
   const onTabChange = (value) => {
     if (value === 0) {
       setFile(TABS.films.file);
-      setUrlParam(TABS.films.path);
     }
     if (value === 1) {
       setFile(TABS.tv.file);
-      setUrlParam(TABS.tv.path);
     }
     if (value === 2) {
       setFile(TABS.books.file);
-      setUrlParam(TABS.books.path);
     }
     if (value === 3) {
       setFile(TABS.restaurants.file);
-      setUrlParam(TABS.restaurants.path);
     }
   }
 
-  const setUrlParam = (param) => {
-      window.history.pushState('', '', '/lister/' + param);
-  }
-
   useEffect(() => {
-      // If URL is missing a page param or trailing slash at the end then add one so page loads correctly
-      const urlParts = window.location.href.split('/');
-      const lastPart = urlParts[urlParts.length - 1];
-      if (lastPart === "lister") {
-          window.location.href += '/';
-      }
-
-      const newLastPart = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-      if (!newLastPart) {
-          // If there's no page param then default to the first tab (Films)
-          handleChange(null, 0);
-      } else {
-          // If there is a page param then load that specific page
-          const tab = TABS[lastPart];
-          if (tab) {
-              handleChange(null, tab.index);
-          }
-      }
-
-  }, [onTabChange]);
+      onTabChange(0);
+  }, []);
 
   return (
     <div className={blk()}>
