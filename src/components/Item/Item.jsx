@@ -15,7 +15,7 @@ import "./item.scss";
 const CSS_BLOCK_NAME = "item";
 const blk = block(CSS_BLOCK_NAME);
 
-function Item({ index, name, rating, review }) {
+function Item({ index, name, rating, review, date }) {
 
     const [state, setState] = useState({
         raised: false,
@@ -86,7 +86,13 @@ function Item({ index, name, rating, review }) {
                     <Fade in={open}>
                         <Box sx={style}>
                             <div className={blk("paper")}>
-                                <div className={blk("modal-header")}>
+                                <div
+                                    className={blk("modal-header")}
+                                    style={{
+                                        backgroundColor: ratingsColours[rating],
+                                        color: "#ffffff",
+                                    }}
+                                >
                                     <h3 className={blk("modal-title")}>{name} - { ratingOutOfTen }/10 { ratingInfo.emoji }</h3>
                                     <span className={blk("modal-close")}>
                                         <IconButton onClick={handleClose}>
@@ -94,7 +100,10 @@ function Item({ index, name, rating, review }) {
                                         </IconButton>
                                     </span>
                                 </div>
-                                <p className={blk("modal-review")}>{review}</p>
+                                <div className={blk("modal-review")}>
+                                    <p style={{ margin: 0 }}>{review}</p>
+                                    <p style={{ marginBottom: 0, marginTop: 4, opacity: '50%', fontSize: 14 }}>{date}</p>
+                                </div>
                             </div>
                         </Box>
                     </Fade>
@@ -110,6 +119,7 @@ Item.propTypes = {
     name: PropTypes.string.isRequired,
     rating: PropTypes.string.isRequired,
     review: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
 };
 
 export default Item;

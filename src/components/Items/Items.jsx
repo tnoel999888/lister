@@ -23,6 +23,7 @@ function Items({ currentData, originalData }) {
                             name={name}
                             rating={rating}
                             review={review}
+                            date={date}
                         />
                     );
                 })
