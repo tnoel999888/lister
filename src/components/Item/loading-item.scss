@@ -1,0 +1,22 @@
+.loading-item {
+    background-color: #686868;
+    height: 63px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    animation-name: color;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes color {
+    0% {
+        background-color: #686868;
+    }
+    50% {
+        background-color: #7d7c7c;
+    }
+    100 {
+        background-color: #686868;
+    }
+}
