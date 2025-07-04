@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { Items } from "../Items";
+import { Items, LoadingItems } from "../Items";
 import { Controls } from "../Controls";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
 import { block } from "bem-cn";
 import { getRatingInfo } from "../consts";
 import Divider from "@mui/material/Divider";
@@ -9,14 +8,26 @@ import PropTypes from "prop-types";
 import Papa from "papaparse";
 
 import { connect } from "react-redux";
-import { setCurrentData, setOriginalData, setRatingsHistogramData, setDatesHistogramData } from "../../reducers/rootReducer";
+import {
+    setCurrentData,
+    setOriginalData,
+    setRatingsHistogramData,
+    setDatesHistogramData
+} from "../../reducers/rootReducer";
 
 import "./main.scss";
 
 const CSS_BLOCK_NAME = "main";
 const blk = block(CSS_BLOCK_NAME);
 
-function Main({ ratingsFile, setCurrentData, originalData, setOriginalData, setRatingsHistogramData, setDatesHistogramData }) {
+function Main({
+    ratingsFile,
+    setCurrentData,
+    originalData,
+    setOriginalData,
+    setRatingsHistogramData,
+    setDatesHistogramData
+}) {
 
     let dataLoaded = false;
 
@@ -71,17 +82,11 @@ function Main({ ratingsFile, setCurrentData, originalData, setOriginalData, setR
 
     return (
         <div className={blk()}>
-            { dataLoaded ?
-                <div className={blk("content")}>
-                    <Controls />
-                    <Divider className="main-divider" />
-                    <Items />
-                </div>
-                : 
-                <div className={blk("loading-spinner")}>
-                    <AutorenewIcon size={80} style={{ margin: "auto", color: "#1F96F3" }}/>
-                </div>
-            }
+            <div className={blk("content")}>
+                <Controls />
+                <Divider className="main-divider" />
+                { dataLoaded ? <Items /> : <LoadingItems /> }
+            </div>
         </div>
     );
 }
