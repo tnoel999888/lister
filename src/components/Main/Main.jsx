@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Items, LoadingItems } from "../Items";
 import { Controls } from "../Controls";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
 import { block } from "bem-cn";
 import { getRatingInfo } from "../consts";
 import Divider from "@mui/material/Divider";
