@@ -1,4 +1,3 @@
-import React from "react";
 import { Search } from "../Search";
 import { Sort } from "../Sort";
 import { Stats } from "../Stats";

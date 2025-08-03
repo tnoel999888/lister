@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Items, LoadingItems } from "../Items";
 import { Controls } from "../Controls";
 import { block } from "bem-cn";
@@ -54,17 +54,23 @@ function Main({
                     reversedData.map((data, index) => {
                         const rating = data[1];
                         const date = data[3];
+
                         if (date) {
                             const dateParts = date.split("-");
                             const year = dateParts[2];
                             datesHistogramData.push(year);
                         }
 
-                        // Add to histogram array, ceil used to create bucket size of 1
-                        ratingsHistogramData.push(Math.ceil(rating / 10));
+                        if (rating) {
+                            // Add to histogram array, ceil used to create bucket size of 1
+                            ratingsHistogramData.push(Math.ceil(rating / 10));
 
-                        const ratingInfo = getRatingInfo(rating);
-                        data.push(ratingInfo.rank);
+                            const ratingInfo = getRatingInfo(rating);
+                            data.push(ratingInfo.rank);
+                        } else {
+                            data.push("");
+                        }
+
                         return data.push(index);
                     });
 

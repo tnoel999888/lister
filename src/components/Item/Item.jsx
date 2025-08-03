@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { block } from "bem-cn";
 import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
@@ -48,7 +48,7 @@ function Item({ index, name, rating, review, date }) {
             <Card 
                 className={blk("root") + raisedClass }
                 style={{
-                    backgroundColor: ratingsColours[rating],
+                    backgroundColor: rating ? ratingsColours[rating] : "grey",
                     color: "#ffffff",
                     maxWidth: "fit-content"
                 }}
@@ -63,8 +63,8 @@ function Item({ index, name, rating, review, date }) {
                         <span className={blk("index")}>#{ index }</span>
                     </div>
                     <div>
-                        <span className={blk("rating")}>{ ratingOutOfTen }/10</span>
-                        <span className={blk("emoji")} title={ratingInfo ? ratingInfo.name : ""}>{ ratingInfo.emoji }</span>
+                        { rating ? <span className={blk("rating")}>{ ratingOutOfTen }/10</span> : null }
+                        { rating ? <span className={blk("emoji")} title={ratingInfo ? ratingInfo.name : ""}>{ ratingInfo.emoji }</span> : null }
                         { review !== "" ? 
                             <span className={blk("review")}>
                                 <IconButton onClick={handleOpen}>

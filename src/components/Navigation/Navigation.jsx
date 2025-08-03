@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -11,6 +11,7 @@ import logo from "../../assets/lister-logo-rectangle.jpg";
 import moviesFile from "../../data/movie-ratings.csv";
 import tvShowsFile from "../../data/tv-ratings.csv";
 import booksFile from "../../data/book-ratings.csv";
+import boxingFile from "../../data/boxing-ratings.csv";
 import restaurantsFile from "../../data/restaurant-ratings.csv";
 
 import { connect } from "react-redux";
@@ -47,11 +48,17 @@ function Navigation({ setFile, setSelectedFilters }) {
             path: "books",
             index: 2,
         },
+        boxing: {
+            name: "Boxing",
+            file: boxingFile,
+            path: "boxing",
+            index: 3,
+        },
         restaurants: {
             name: "Restaurants",
             file: restaurantsFile,
             path: "restaurants",
-            index: 3,
+            index: 4,
         },
     };
 
@@ -66,6 +73,9 @@ function Navigation({ setFile, setSelectedFilters }) {
             setFile(TABS.books.file);
         }
         if (value === 3) {
+            setFile(TABS.boxing.file);
+        }
+        if (value === 4) {
             setFile(TABS.restaurants.file);
         }
     };
@@ -93,6 +103,7 @@ function Navigation({ setFile, setSelectedFilters }) {
                     <Tab label={TABS.films.name} />
                     <Tab label={TABS.tv.name} />
                     <Tab label={TABS.books.name} />
+                    <Tab label={TABS.boxing.name} />
                     <Tab label={TABS.restaurants.name} />
                 </Tabs>
             </AppBar>
