@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { block } from "bem-cn";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -28,6 +28,10 @@ function Filters({
     // Get count for each rating group
     /* eslint-disable no-unused-vars */
     originalData.forEach(([name, rating, review, date, rank, index]) => {
+        if (!rating) {
+            return;
+        }
+
         const ratingInfo = getRatingInfo(rating);
         if (ratings[ratingInfo.rank]) {
             ratings[ratingInfo.rank]++;
