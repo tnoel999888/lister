@@ -63,8 +63,13 @@ function Item({ index, name, rating, review, date }) {
                         <span className={blk("index")}>#{ index }</span>
                     </div>
                     <div>
-                        { rating ? <span className={blk("rating")}>{ ratingOutOfTen }/10</span> : null }
-                        { rating ? <span className={blk("emoji")} title={ratingInfo ? ratingInfo.name : ""}>{ ratingInfo.emoji }</span> : null }
+                        { rating ? (
+                            <>
+                                <span className={blk("rating")}>{ ratingOutOfTen }/10</span>
+                                <span className={blk("emoji")} title={ratingInfo ? ratingInfo.name : ""}>{ ratingInfo.emoji }</span>
+                            </>) : 
+                            <span className={blk("rating")}>Not rated</span>
+                        }
                         { review !== "" ? 
                             <span className={blk("review")}>
                                 <IconButton onClick={handleOpen}>
@@ -100,9 +105,9 @@ function Item({ index, name, rating, review, date }) {
                                         </IconButton>
                                     </span>
                                 </div>
-                                <div className={blk("modal-review")}>
-                                    <p style={{ margin: 0 }}>{review}</p>
-                                    <p style={{ marginBottom: 0, marginTop: 4, opacity: '50%', fontSize: 14 }}>{date}</p>
+                                <div className={blk("modal-content")}>
+                                    <p className={blk("modal-content-review")}>{review}</p>
+                                    <p className={blk("modal-content-date")}>{date}</p>
                                 </div>
                             </div>
                         </Box>
