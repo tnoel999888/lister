@@ -1,70 +1,82 @@
 .item {
-    white-space: nowrap;
-    text-align: justify;
-    margin-right: 12px;
-    margin-bottom: 12px;
+  white-space: nowrap;
+  text-align: justify;
+  margin-right: 12px;
+  margin-bottom: 12px;
 
-    &__root {
-      transition: transform 0.15s ease-in-out;
-    }
+  &__root {
+    transition: transform 0.15s ease-in-out;
+  }
 
-    &__card-hovered {
-      transform: scale3d(1.05, 1.05, 1);
-    }
+  &__card-hovered {
+    transform: scale3d(1.05, 1.05, 1);
+  }
 
-    &__paper {
-      width: 300px;
-      background-color: white;
-      padding: 0;
-      border: 1px solid #000;
-      box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
-    }
+  &__paper {
+    width: 300px;
+    background-color: white;
+    padding: 0;
+    border: 1px solid #000;
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+  }
 
-    &__rating {
-      font-size: 15px;
-    }
+  &__rating {
+    font-size: 15px;
+    opacity: 80%;
+  }
 
-    &__card {
-      color: white;
-    }
+  &__card {
+    color: white;
+  }
 
-    &__emoji {
-      margin-left: 8px;
-    }
+  &__emoji {
+    margin-left: 8px;
+  }
 
-    &__review {
-      margin-left: 8px;
-      float: right;
-    }
+  &__review {
+    margin-left: 8px;
+    float: right;
+  }
 
-    &__modal-header {
-      display: flex;
-      padding: 12px;
-    }
+  &__modal-header {
+    display: flex;
+    padding: 12px;
+  }
 
-    &__modal-close {
-      margin-left: auto;
-    }
+  &__modal-close {
+    margin-left: auto;
+  }
 
-    &__modal-title {
-      margin: 0 0 !important;
-    }
+  &__modal-title {
+    margin: 0 0 !important;
+  }
 
-    &__modal-review {
-      margin: 0 0 !important;
-      padding: 12px;
-    }
+  &__modal-content {
+    margin: 0 0 !important;
+    padding: 12px;
+  }
 
-    &__index {
-      margin-left: 12px;
-      font-size: 14px;
-      float: right;
-      color: #ffffff96;
-    }
+  &__modal-content-review {
+    margin: 0;
+  }
+
+  &__modal-content-date {
+    margin-bottom: 0;
+    margin-top: 4;
+    opacity: 50%;
+    font-size: 14px;
+  }
+
+  &__index {
+    margin-left: 12px;
+    font-size: 14px;
+    float: right;
+    opacity: 80%;
+  }
 }
 
 .MuiCardContent-root {
-    padding: 8px 12px 12px 12px !important;
+  padding: 8px 12px 12px 12px !important;
 }
 
 @media only screen and (max-width: 1252px) {
