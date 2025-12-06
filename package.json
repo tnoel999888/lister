@@ -15,7 +15,7 @@
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.0",
     "bem-cn": "^3.0.1",
-    "node-sass": "7.0.0",
+    "node-sass": "9.0.0",
     "papaparse": "^5.4.1",
     "plotly.js": "^2.35.2",
     "react": "^19.0.0",
